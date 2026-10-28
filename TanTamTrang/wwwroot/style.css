@@ -1,0 +1,2415 @@
+@font-face {
+  font-family: 'Greek Freak Local';
+  src: url('fonts/GreekFreak/Greek-Freak.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#050505;color:#f2f2ee;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+/* Works page only: hide the native scrollbar (the reel's own visuals
+   are the only scroll feedback needed) while keeping scrolling itself
+   fully working. */
+html:has(body.works-page){
+  scrollbar-width:none;      /* Firefox */
+  -ms-overflow-style:none;   /* legacy Edge / IE */
+}
+html:has(body.works-page)::-webkit-scrollbar{
+  display:none;              /* Chrome / Safari / Chromium Edge */
+}
+body.works-page{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+body.works-page::-webkit-scrollbar{
+  display:none;
+}
+
+/* Sub-pages driven by their own scroll visuals — the rolling cube on
+   About / Poster, the centred column on Calendar — hide the native
+   scrollbar (scrolling itself stays fully working). */
+html:has(.poster-page),
+html:has(.about-page),
+html:has(.poster-cube-page){
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+html:has(.poster-page)::-webkit-scrollbar,
+html:has(.about-page)::-webkit-scrollbar,
+html:has(.poster-cube-page)::-webkit-scrollbar{
+  display:none;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:root{
+  --bg:#050505;
+  --line:#232323;
+  --soft:#111;
+  --text:#f2f2ee;
+  --muted:#7a7a7a;
+  --mono:"Courier New",monospace;
+}
+
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:72px;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 24px;z-index:100;
+  background:linear-gradient(to bottom,rgba(5,5,5,.92),rgba(5,5,5,.58),rgba(5,5,5,.08),transparent);
+  backdrop-filter:blur(4px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.topnav{
+  display:flex;gap:54px;align-items:center;justify-content:center;
+  font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+}
+.topnav a{
+  color:#999;transition:color .22s ease, opacity .22s ease;
+}
+.topnav a:hover,.topnav a.active{
+  color:#fff;
+}
+
+.page-pad{
+  padding:110px 26px 40px;
+}
+
+.kicker{
+  font:10px var(--mono);letter-spacing:.11em;color:var(--muted)
+}
+
+/* HOME */
+.home{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:110px 26px 36px;
+}
+.home-wrap{
+  width:min(1280px,100%);
+  display:grid;
+  grid-template-columns:minmax(180px,240px) minmax(360px,1fr) minmax(180px,240px);
+  gap:32px;
+  align-items:center;
+}
+.home-side{
+  align-self:stretch;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:min(74vh,820px);
+}
+.home-side p,.home-side a{
+  font:10px/1.6 var(--mono);
+  color:#8a8a8a;
+}
+.home-side a{color:#ddd}
+.home-image-card{
+  width:100%;
+  aspect-ratio:4/5;
+  background:#0d0d0d;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:0 0 0 1px rgba(255,255,255,.02) inset;
+}
+.home-image-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 45%;
+  filter:grayscale(100%) contrast(1.08);
+}
+.home-note{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+.home-title{
+  font-size:clamp(34px,4vw,62px);
+  line-height:.94;
+  letter-spacing:-.055em;
+  color:#f2f2ee;
+  margin-bottom:12px;
+}
+
+/* Generic page title */
+.page-shell{
+  min-height:100vh;
+  padding:118px 26px 70px;
+}
+.page-title{
+  font-size:clamp(74px,14vw,210px);
+  line-height:.8;
+  letter-spacing:-.085em;
+  margin:34px 0 58px;
+}
+
+/* EXPERIENCE DESIGN (Works sub-page): the case study as a column of pages,
+   each at its own proportion - these are laid-out spreads, so nothing is
+   cropped. */
+/* EXPERIENCE DESIGN — four project buttons under the title; the one chosen
+   turns white and its case study opens beneath them. */
+.ed-menu{
+  max-width:1240px;
+  margin:0 auto clamp(40px,7vh,80px);
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(10px,1.2vw,18px);
+}
+.ed-tab{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:28px;
+  min-height:clamp(150px,15vw,200px);
+  padding:clamp(16px,1.6vw,24px);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:6px;
+  background:transparent;
+  color:#f2f2ee;
+  text-align:left;
+  cursor:pointer;
+  transition:background-color .3s ease, color .3s ease, border-color .3s ease, transform .3s cubic-bezier(.22,1,.36,1);
+}
+.ed-tab:hover,
+.ed-tab:focus-visible{
+  border-color:#fff;
+  transform:translateY(-3px);
+}
+.ed-tab-no,
+.ed-tab-go{
+  font:10px var(--mono);
+  letter-spacing:.14em;
+  color:rgba(242,242,238,.6);
+}
+.ed-tab-title{
+  font:900 clamp(17px,1.7vw,26px)/1.05 'Arial Black', 'Arial Bold', Gadget, Arial, Helvetica, sans-serif;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.ed-tab.is-on{
+  background:#f2f2ee;
+  border-color:#f2f2ee;
+  color:#050505;
+  transform:none;
+}
+.ed-tab.is-on .ed-tab-no,
+.ed-tab.is-on .ed-tab-go{ color:rgba(5,5,5,.6); }
+
+.ed-article{
+  scroll-margin-top:90px;
+}
+.ed-article.is-in{
+  animation:edArticleIn .7s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes edArticleIn{
+  from{ opacity:0; transform:translateY(28px); }
+  to  { opacity:1; transform:none; }
+}
+.ed-article-head{
+  max-width:1240px;
+  margin:0 auto clamp(24px,4vh,40px);
+  padding-top:clamp(20px,3vh,32px);
+  border-top:1px solid var(--line);
+}
+.ed-article-title{
+  margin-top:14px;
+  font-size:clamp(30px,4.4vw,64px);
+  line-height:.95;
+  letter-spacing:-.05em;
+}
+.ed-article-intro{
+  margin-top:18px;
+  max-width:560px;
+  font:12px/1.8 var(--mono);
+  color:var(--muted);
+}
+.ed-soon{
+  max-width:1240px;
+  margin:0 auto;
+  padding:clamp(60px,14vh,140px) 0 18vh;
+  font:11px var(--mono);
+  letter-spacing:.14em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+@media(max-width:900px){
+  .ed-menu{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:480px){
+  .ed-menu{ grid-template-columns:minmax(0,1fr); }
+  .ed-tab{ min-height:0; gap:18px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .ed-article.is-in{ animation:none; }
+  .ed-tab{ transition:none; }
+}
+.ed-deck{
+  max-width:1240px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(18px,3vw,40px);
+  padding-bottom:clamp(48px,8vh,96px);
+}
+.ed-page{
+  margin:0;
+}
+.ed-page img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  background:#111;
+}
+.ed-pdf{
+  margin-left:22px;
+}
+.ed-cta{
+  display:flex;
+  justify-content:center;
+  padding:0 0 14vh;
+}
+/* The one button on the page: outlined in white like the frames on Works,
+   filling white on hover so it reads as the place to go next. */
+.ed-figma{
+  display:inline-block;
+  padding:18px 34px;
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:999px;
+  font:12px/1 var(--mono);
+  letter-spacing:.18em;
+  color:#fff;
+  transition:background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+.ed-figma:hover,
+.ed-figma:focus-visible{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+/* 3D / VIDEO (Works sub-page). Two 16:9 loops set on a twelve-column grid
+   and staggered - the first holds the left, the second the right - so two
+   frames of the same shape read as a sequence rather than a stack.
+   Each one opens as it scrolls in: the frame's clip widens from a letterbox
+   to the full picture while the clip lifts into place. Hovering eases the
+   footage in a little behind the fixed frame, as the frames on Works do. */
+.vid-grid{
+  max-width:1240px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  row-gap:clamp(56px,10vw,140px);
+  column-gap:clamp(12px,2vw,24px);
+  padding-bottom:16vh;
+}
+.vid-a{ grid-column:1 / span 10; }
+.vid-b{ grid-column:3 / span 10; }
+.vid-item{
+  margin:0;
+  opacity:0;
+  transform:translateY(48px);
+  transition:opacity 900ms cubic-bezier(.16,.84,.32,1),
+             transform 1100ms cubic-bezier(.16,.84,.32,1);
+}
+.vid-item.is-in{
+  opacity:1;
+  transform:none;
+}
+.vid-frame{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  background:#0b0b0b;
+  aspect-ratio:16/9;
+  clip-path:inset(14% 0 14% 0 round 14px);
+  transition:clip-path 1300ms cubic-bezier(.16,.84,.32,1), border-color .4s ease;
+}
+.vid-item.is-in .vid-frame{
+  clip-path:inset(0 0 0 0 round 14px);
+}
+.vid{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  scale:1;
+  transition:scale 900ms cubic-bezier(.16,.84,.32,1);
+}
+@media (hover:hover) and (pointer:fine){
+  .vid-frame:hover{ border-color:rgba(255,255,255,.42); }
+  .vid-frame:hover .vid{ scale:1.04; }
+}
+.vid-item figcaption{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:baseline;
+  gap:18px;
+  padding:16px 2px 0;
+  font:10px var(--mono);
+  letter-spacing:.14em;
+  color:var(--muted);
+}
+.vid-name{
+  font:700 clamp(15px,1.6vw,22px)/1 Arial, Helvetica, sans-serif;
+  letter-spacing:.02em;
+  color:#fff;
+}
+.vid-meta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+/* a small red dot that breathes while the clip is running */
+.vid-live{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#ff4a2a;
+  opacity:.35;
+}
+.vid-item.is-playing .vid-live{
+  animation:vid-live 1.6s ease-in-out infinite;
+}
+@keyframes vid-live{
+  0%,100%{ opacity:.35; }
+  50%    { opacity:1; }
+}
+@media(max-width:800px){
+  .vid-a,.vid-b{ grid-column:1 / -1; }
+  .vid-item figcaption{ gap:12px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .vid-item{ opacity:1; transform:none; transition:none; }
+  .vid-frame{ clip-path:inset(0 0 0 0 round 14px); transition:none; }
+  .vid, .vid-frame:hover .vid{ scale:1; transition:none; }
+  .vid-item.is-playing .vid-live{ animation:none; opacity:1; }
+}
+
+/* POSTER (Works sub-page) */
+.poster-page{
+  padding:118px 26px 0;
+}
+.poster-hero{
+  /* wide enough that the big display title never outgrows it — a title
+     wider than its box gets shoved right (start-edge) inside the page's
+     overflow-x:hidden scroll container instead of staying centred. */
+  max-width:min(1040px,92vw);
+  margin:0 auto 10vh;
+  text-align:center;
+}
+.poster-title{
+  font-size:clamp(64px,12vw,160px);
+  margin:20px 0 26px;
+  /* the inherited -.085em tracking + the C/R side bearings leave the ink
+     poking past the trailing edge, so a centred line still drifts left of
+     true centre; pad the right side to bring the visible word back to the
+     middle (measured: needs ~.13em). */
+  padding-right:.13em;
+}
+.poster-intro{
+  font:12px/1.8 var(--mono);
+  color:var(--muted);
+  max-width:460px;
+  margin:0 auto 30px;
+}
+.poster-back{
+  display:inline-block;
+  font:10px var(--mono);
+  letter-spacing:.08em;
+  padding-bottom:4px;
+  border-bottom:1px solid #666;
+  color:#ddd;
+}
+.poster-item{
+  display:grid;
+  grid-template-columns:1fr minmax(220px,320px);
+  gap:clamp(24px,5vw,80px);
+  align-items:center;
+  max-width:1240px;
+  margin:0 auto;
+  padding:8vh 0;
+  border-top:1px solid var(--line);
+}
+.poster-item:last-of-type{
+  border-bottom:1px solid var(--line);
+}
+.poster-item.reverse{
+  grid-template-columns:minmax(220px,320px) 1fr;
+}
+.poster-item.reverse .poster-image{order:2}
+.poster-item.reverse .poster-caption{order:1;text-align:right}
+.poster-image{
+  justify-self:center;
+  background:#0d0d0d;
+  border:1px solid rgba(255,255,255,.05);
+  line-height:0;
+}
+.calendar-showcase{
+  display:flex;
+  justify-content:center;
+  max-width:1240px;
+  margin:0 auto;
+  padding:4vh 0 10vh;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.poster-image img{
+  max-height:88vh;
+  width:auto;
+  max-width:100%;
+  object-fit:contain;
+  margin:0 auto;
+}
+.poster-index{
+  display:block;
+  font:11px var(--mono);
+  color:var(--muted);
+  letter-spacing:.1em;
+  margin-bottom:14px;
+}
+.poster-caption h2{
+  font-size:clamp(24px,3vw,44px);
+  line-height:.95;
+  letter-spacing:-.03em;
+  margin-bottom:16px;
+}
+.poster-caption p{
+  font:11px/1.7 var(--mono);
+  color:var(--muted);
+  max-width:320px;
+}
+.poster-item.reverse .poster-caption p{
+  margin-left:auto;
+}
+
+@media(max-width:820px){
+  .poster-item,.poster-item.reverse{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .poster-item.reverse .poster-image{order:0}
+  .poster-item.reverse .poster-caption{order:0;text-align:left}
+  .poster-item.reverse .poster-caption p{margin-left:0}
+  .poster-image img{max-height:70vh}
+}
+
+/* PHOTOGRAPHY / DIGITAL ART — full-bleed editorial grid
+   Rows of one, two or three frames butted straight against each other with
+   no gutter, every row free to be its own height, and a small caption line
+   under each frame. Six columns is the common denominator: a third of a row
+   spans 2, a half spans 3, a lead frame spans all 6. */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  /* an even gutter between frames, and the caption's own line plus a little
+     more between rows, so the sheet reads as separate pictures */
+  column-gap:clamp(10px,1.3vw,22px);
+  row-gap:clamp(26px,2.8vw,44px);
+  max-width:1680px;
+  margin:0 auto;
+  padding:clamp(22px,3vw,40px) clamp(0px,2vw,24px) 14vh;
+  border-top:1px solid var(--line);
+}
+.photo-grid figure{
+  /* auto / span N, never a bare "span N": the shorthand puts a lone span on
+     grid-column-START, so .ph-new setting start:1 would silently drop the
+     span and squash the frame to a single column. */
+  grid-column:auto / span 2;
+  margin:0;
+  cursor:zoom-in;
+}
+.photo-grid img{
+  width:100%;
+  height:100%;
+  aspect-ratio:7/5;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  background:#0d0d0d;
+  /* No hover scale on purpose: it would move the box the lightbox measures
+     to fly the picture back into. */
+  filter:grayscale(.06) brightness(.9);
+  transition:filter .4s ease;
+}
+.photo-grid figure:hover img{ filter:none; }
+
+.photo-grid .ph-half{ grid-column:auto / span 3; }
+.photo-grid .ph-half img{ aspect-ratio:3/2; }
+.photo-grid .ph-full{ grid-column:1 / -1; }
+.photo-grid .ph-full img{ aspect-ratio:2/1; object-position:center 58%; }
+
+/* A row carrying a single frame: the rest of the row is deliberately left
+   empty. Auto-placement never runs backwards, so pinning the NEXT frame to
+   column 1 is all it takes to close the row off. */
+.photo-grid .ph-solo-l{ grid-column:1 / span 2; }
+.photo-grid .ph-solo-r{ grid-column:5 / span 2; }
+.photo-grid .ph-new{ grid-column-start:1; }
+
+.photo-grid figcaption{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:14px;
+  margin-top:10px;
+  padding:0;
+  font:9px var(--mono);
+  letter-spacing:.11em;
+  color:var(--muted);
+}
+.photo-grid .ph-cat{ text-align:right; }
+
+/* While a photo is open in the lightbox its slot is held empty so the
+   zoom-out lands on the exact spot it left. Only the picture goes — the
+   caption stays put, and visibility keeps the box for the measurement. */
+.photo-grid figure.is-open img{ visibility:hidden; }
+
+/* Digital Art is a gallery, not a contact sheet, and it needs the opposite
+   treatment to the photographs:
+     - nothing is cropped, so every piece keeps its own proportions
+     - there IS a gutter. Butted edge to edge, the two ink drawings share a
+       paper tone and run together into one continuous cream band with no
+       telling where one piece ends
+     - it sits inside a measured column instead of bleeding off the screen */
+.photo-grid.photo-grid-art{
+  align-items:start;
+  max-width:1240px;
+  margin:0 auto;
+  column-gap:clamp(18px,2.4vw,32px);
+  row-gap:clamp(58px,6vw,96px);
+  padding:2px 0 18vh;               /* as it was before the photo sheet got its gutter */
+}
+.photo-grid.photo-grid-art img{
+  aspect-ratio:auto;
+  height:auto;
+  object-fit:contain;
+  filter:none;
+}
+.photo-grid.photo-grid-art figcaption{ padding:0; }
+/* The odd piece out — the one square work — is centred rather than parked at
+   the edge, and sized so it stands the same height as the pairs above and
+   below it instead of leaving two thirds of its row empty. */
+.photo-grid.photo-grid-art .ph-centre{ grid-column:3 / span 2; }
+
+@media(max-width:900px){
+  .photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:10px;
+    row-gap:26px;
+    padding-inline:0;
+  }
+  .photo-grid figure,
+  .photo-grid .ph-half,
+  .photo-grid .ph-third{ grid-column:auto / span 1; }
+  .photo-grid .ph-full{ grid-column:1 / -1; }
+  .photo-grid .ph-full img{ aspect-ratio:16/9; }
+  .photo-grid .ph-solo-l{ grid-column:1 / span 1; }
+  .photo-grid .ph-solo-r{ grid-column:2 / span 1; }
+  .photo-grid img,
+  .photo-grid .ph-half img{ aspect-ratio:3/2; }
+  .photo-grid.photo-grid-art img{ aspect-ratio:auto; }
+  /* two columns is too coarse to centre inside, so the square piece takes the
+     whole row and is held to a sensible size in the middle of it */
+  .photo-grid.photo-grid-art .ph-centre{ grid-column:1 / -1; }
+  .photo-grid.photo-grid-art .ph-centre img,
+  .photo-grid.photo-grid-art .ph-centre figcaption{ max-width:min(100%,340px); margin-inline:auto; }
+  .photo-grid .ph-new{ grid-column-start:1; }
+}
+@media(max-width:560px){
+  .photo-grid{
+    grid-template-columns:1fr;
+    row-gap:34px;
+  }
+  .photo-grid figure,
+  .photo-grid .ph-half,
+  .photo-grid .ph-third,
+  .photo-grid .ph-full,
+  .photo-grid .ph-solo-l,
+  .photo-grid .ph-solo-r{ grid-column:1 / -1; }
+  .photo-grid img,
+  .photo-grid .ph-half img,
+  .photo-grid .ph-full img{ aspect-ratio:3/2; }
+  .photo-grid .ph-full img{ object-position:center; }
+  .photo-grid.photo-grid-art img{ aspect-ratio:auto; }
+  .photo-grid.photo-grid-art .ph-centre{ grid-column:1 / -1; }
+  .photo-grid.photo-grid-art .ph-centre img,
+  .photo-grid.photo-grid-art .ph-centre figcaption{ max-width:min(100%,340px); margin-inline:auto; }
+}
+
+/* PHOTOGRAPHY — in fives. One large frame on the left, as tall as two rows,
+   and a two-by-two of small frames beside it, all landscape 3:2 with the
+   same gap across and down. The large column is sized so its frame is
+   exactly 3:2 too: with w the small width and g the gap, two rows and a gap
+   stand 2w/1.5 + g tall, so the large frame is 2w + 1.5g wide, and
+   w = (100% - 3.5g) / 4. The number sits on the picture's corner, so nothing
+   adds height between rows. One column on a phone. (Digital Art keeps its
+   own gallery layout above.) */
+.photo-grid.photo-grid-even{
+  --g:clamp(10px,1.2vw,20px);
+  grid-template-columns:calc((100% - 3.5 * var(--g)) / 2 + 1.5 * var(--g)) minmax(0,1fr) minmax(0,1fr);
+  gap:var(--g);
+  padding-inline:0;
+}
+.photo-grid.photo-grid-even > figure:nth-child(5n+1){
+  grid-column:1 / span 1;
+  grid-row:span 2;
+}
+.photo-grid.photo-grid-even > figure:nth-child(5n+1) > img{
+  aspect-ratio:auto;
+  height:100%;
+}
+.photo-grid.photo-grid-even > figure{
+  grid-column:auto / span 1;
+  position:relative;
+}
+.photo-grid.photo-grid-even > figure > img{
+  aspect-ratio:3/2;
+  height:auto;
+  object-position:center;
+}
+.photo-grid.photo-grid-even > figure > figcaption{
+  position:absolute;
+  left:10px;
+  bottom:8px;
+  margin:0;
+  padding:0;
+  color:rgba(255,255,255,.82);
+  text-shadow:0 1px 6px rgba(0,0,0,.6);
+  pointer-events:none;
+}
+@media(max-width:900px){
+  .photo-grid.photo-grid-even{ --g:8px; }
+}
+@media(max-width:560px){
+  .photo-grid.photo-grid-even{ --g:10px; grid-template-columns:minmax(0,1fr); }
+  .photo-grid.photo-grid-even > figure:nth-child(5n+1){ grid-row:auto; }
+  .photo-grid.photo-grid-even > figure:nth-child(5n+1) > img{ aspect-ratio:3/2; height:auto; }
+}
+
+/* POSTER — a staircase grid. Four columns, each column dropped a step below
+   the one to its left, so every row runs downhill from left to right. Each
+   poster is shown whole at its own ratio, with its name, a line about it and
+   a small meta row under it. Fewer columns on narrower screens, and one plain
+   column on a phone. Click opens the photography lightbox. */
+.pst-page{
+  padding:118px clamp(18px,3vw,48px) 0;
+}
+.pst-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:20px;
+  padding-bottom:16px;
+  margin-bottom:clamp(28px,5vh,56px);
+  border-bottom:1px solid var(--line);
+}
+.pst-head .small{
+  font:10px var(--mono);
+  color:var(--muted);
+  letter-spacing:.08em;
+}
+.pst-back{
+  font:10px var(--mono);
+  letter-spacing:.08em;
+  padding-bottom:4px;
+  border-bottom:1px solid #666;
+}
+.pst-grid{
+  --cols:4;
+  --step:clamp(28px,4.5vw,80px);
+  --gap-x:clamp(12px,1.4vw,24px);
+  --gap-y:clamp(24px,2.6vw,44px);
+  display:grid;
+  grid-template-columns:repeat(var(--cols), minmax(0,1fr));
+  column-gap:var(--gap-x);
+  row-gap:var(--gap-y);
+  align-items:start;
+  padding-bottom:clamp(60px,12vh,140px);
+}
+.pst-item:nth-child(4n+2){ margin-top:var(--step); }
+.pst-item:nth-child(4n+3){ margin-top:calc(var(--step) * 2); }
+.pst-item:nth-child(4n+4){ margin-top:calc(var(--step) * 3); }
+.pst-item{
+  margin:0;
+  min-width:0;
+}
+.pst-img{
+  overflow:hidden;
+  background:#0d0d0d;
+  cursor:zoom-in;
+}
+.pst-img img{
+  width:100%;
+  height:auto;
+  transition:transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;
+}
+.pst-item:hover .pst-img img{
+  transform:scale(1.03);
+}
+.pst-item.is-open img{ visibility:hidden; }
+.pst-item figcaption{
+  padding-top:14px;
+}
+.pst-item h2{
+  font:700 clamp(13px,1vw,16px)/1.2 Arial, Helvetica, sans-serif;
+  letter-spacing:0;
+  color:#f2f2ee;
+}
+.pst-item p{
+  margin-top:8px;
+  font:11px/1.6 var(--mono);
+  color:#8a8a8a;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.pst-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:14px;
+  font:9px var(--mono);
+  letter-spacing:.08em;
+  color:#5f5f5f;
+}
+/* script.js adds .pst-js, then lifts each poster in as it scrolls into view */
+.pst-grid.pst-js .pst-item{
+  opacity:0;
+  transform:translateY(36px);
+  transition:opacity .8s ease, transform .9s cubic-bezier(.22,1,.36,1);
+}
+.pst-grid.pst-js .pst-item.is-in{
+  opacity:1;
+  transform:none;
+}
+/* With script the grid is dealt into real columns (script.js), so a poster
+   sits right under the one above it in its own column instead of waiting
+   for the whole row - the staircase then comes from each column's top. */
+.pst-grid.pst-cols{
+  display:flex;
+  align-items:flex-start;
+  gap:var(--gap-x);
+}
+.pst-col{
+  flex:1 1 0;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap-y);
+}
+.pst-grid.pst-cols .pst-item:nth-child(n){ margin-top:0; }
+.pst-col:nth-child(2){ padding-top:var(--step); }
+.pst-col:nth-child(3){ padding-top:calc(var(--step) * 2); }
+.pst-col:nth-child(4){ padding-top:calc(var(--step) * 3); }
+@media(max-width:1100px){
+  .pst-grid{ --cols:3; --step:clamp(28px,6vw,70px); }
+  .pst-item:nth-child(n){ margin-top:0; }
+  .pst-item:nth-child(3n+2){ margin-top:var(--step); }
+  .pst-item:nth-child(3n+3){ margin-top:calc(var(--step) * 2); }
+}
+@media(max-width:720px){
+  .pst-grid{ --cols:2; --step:clamp(24px,9vw,60px); }
+  .pst-item:nth-child(n){ margin-top:0; }
+  .pst-item:nth-child(2n){ margin-top:var(--step); }
+}
+@media(max-width:460px){
+  .pst-page{ padding-top:96px; }
+  .pst-grid{ --cols:1; --gap-y:36px; }
+  .pst-item:nth-child(n){ margin-top:0; }
+}
+/* WORKS — the same staircase, one card per category; each card is a link
+   to its page rather than a picture for the lightbox. */
+.wks-grid .pst-item{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+.wks-grid .pst-img{ cursor:pointer; }
+.wks-cap{ padding-top:14px; }
+.wks-grid .pst-item h2::after{
+  content:' ↗';
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.wks-grid .pst-item:hover h2::after,
+.wks-grid .pst-item:focus-visible h2::after{ opacity:1; }
+@media (prefers-reduced-motion:reduce){
+  .pst-grid.pst-js .pst-item{ opacity:1; transform:none; transition:none; }
+  .pst-img img{ transition:none; }
+}
+
+/* PHOTOGRAPHY — full-screen lightbox with a FLIP zoom to/from the grid slot */
+html.lb-lock,
+html.lb-lock body{ overflow:hidden; }
+
+.photo-lb{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(7,7,7,0);
+  transition:background-color .46s ease, visibility 0s linear .5s;
+  visibility:hidden;
+  pointer-events:none;
+}
+.photo-lb.is-on{
+  background:rgba(7,7,7,1);
+  transition:background-color .46s ease, visibility 0s;
+  visibility:visible;
+  pointer-events:auto;
+}
+/* size is set by JS to the picture's exact fitted box (never bigger than
+   the caps below), so it can't overflow the viewport in either direction */
+.photo-lb-frame{
+  flex:0 0 auto;
+  max-width:94vw;
+  max-height:90vh;
+  will-change:transform;
+  overflow:hidden;
+}
+.photo-lb-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.photo-lb-close{
+  position:fixed;
+  top:20px;
+  right:24px;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  font:300 24px/1 Arial,Helvetica,sans-serif;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  opacity:0;
+  transform:scale(.7) rotate(-30deg);
+  transition:opacity .3s ease .12s, transform .3s ease .12s, background .2s ease, border-color .2s ease;
+}
+.photo-lb-close:hover{
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.6);
+}
+.photo-lb.is-on .photo-lb-close{
+  opacity:1;
+  transform:scale(1) rotate(0);
+}
+
+/* ==========================================
+   TYPOGRAPHY — SELF-TURNING BOOK
+   Open book: two static base pages + two "leaves". One leaf always
+   rests folded on the left, the other rests flat on the right and
+   is the next to turn. A turn just rotates that leaf 0deg -> -180deg
+   and LEAVES it there (no reset / no snap-back), so nothing jumps at
+   the end. The now-hidden leaf is silently recycled to the right
+   during the pause. Shadows: each leaf face carries a baked
+   spine-side shadow (so a resting page always casts one), plus a
+   sweeping cast shadow + sheen animated on the turn's own timeline.
+   ========================================== */
+.book-stage{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:34px;
+  max-width:1240px;
+  margin:0 auto;
+  padding:2vh 0 14vh;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.book{
+  --pw:min(44vw,428px);
+  --ph:calc(var(--pw) * 1.4142);
+  position:relative;
+  width:calc(var(--pw) * 2);
+  height:var(--ph);
+  margin-top:9vh;
+  perspective:2600px;
+  transform-style:preserve-3d;
+}
+.book-shadow{
+  position:absolute;
+  left:50%;
+  bottom:-7%;
+  width:86%;
+  height:44px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.6), rgba(0,0,0,0) 70%);
+  filter:blur(14px);
+  z-index:0;
+}
+.book-page{
+  position:absolute;
+  top:0;
+  width:var(--pw);
+  height:100%;
+  overflow:hidden;
+  background:#0c0c0c;
+  box-shadow:0 34px 90px -34px rgba(0,0,0,.9);   /* static — base pages don't move */
+  z-index:1;
+}
+.book-page img,
+.leaf-face img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  /* upload each page to the GPU once; the rotation is then a pure composite */
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+.book-page-left{left:0;border-radius:3px 0 0 3px}
+.book-page-right{right:0;border-radius:0 3px 3px 0}
+
+/* the soft shadow the turning leaf drops on the spread below.
+   z=45: above every resting leaf (JS gives them 10-40) so it darkens the
+   pages below, but under the leaf in flight (JS gives that one 50) so the
+   moving page isn't shaded by its own shadow. JS ramps opacity + x on the
+   turn's own timeline and it ends fully transparent well before touchdown,
+   so the gutter is clean the instant the page lands. */
+.book-cast{
+  position:absolute;
+  top:0;
+  left:0;
+  width:calc(var(--pw) * 1.3);
+  height:100%;
+  z-index:45;
+  pointer-events:none;
+  opacity:0;
+  will-change:transform, opacity;
+  background:radial-gradient(140% 82% at 50% 50%, rgba(0,0,0,.5), rgba(0,0,0,0) 74%);
+}
+
+/* Leaves. JS owns each leaf's z-index (stack order) and transform. */
+.leaf{
+  position:absolute;
+  top:0;
+  left:var(--pw);
+  width:var(--pw);
+  height:100%;
+  transform-origin:left center;
+  transform-style:preserve-3d;
+  transform:rotateY(0deg);
+  will-change:transform;
+}
+.leaf-face{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  backface-visibility:hidden;
+  background:#0c0c0c;
+}
+.leaf-front{border-radius:0 3px 3px 0}
+.leaf-back{
+  transform:rotateY(180deg);
+  border-radius:3px 0 0 3px;
+}
+/* Gutter shadow baked straight into every face at its spine edge — it is
+   part of the page, identical whether the page rests or turns, so the seam
+   between the two pages never pops. The back (left-page) faces carry a bit
+   more of it: a turned page casts a real shadow into the gutter. */
+.leaf-face::after,
+.leaf-back::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.leaf-face::after{
+  background:linear-gradient(90deg, rgba(0,0,0,.22), rgba(0,0,0,0) 15%);
+}
+.leaf-back::after{
+  background:linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.12) 12%, rgba(0,0,0,0) 40%);
+}
+/* light raking across the leaf as it turns (JS animates opacity) */
+.leaf-sheen{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  backface-visibility:hidden;
+  opacity:0;
+  background:linear-gradient(102deg, rgba(255,255,255,.14), rgba(255,255,255,0) 44%, rgba(0,0,0,.22));
+}
+.book-caption{
+  font:11px var(--mono);
+  letter-spacing:.2em;
+  color:var(--muted);
+}
+
+@media(max-width:820px){
+  .book{--pw:min(46vw,360px);margin-top:7vh}
+  .book-stage{padding:2vh 0 10vh}
+}
+
+/* WORKS */
+.work-list{
+  border-top:1px solid var(--line);
+}
+.work-row{
+  display:grid;
+  grid-template-columns:72px 1fr minmax(150px,240px) 70px;
+  align-items:center;
+  min-height:118px;
+  border-bottom:1px solid var(--line);
+}
+.work-num,.work-cat,.work-year{
+  font:10px var(--mono);
+  color:var(--muted);
+}
+.work-name{
+  font-size:clamp(34px,5.5vw,84px);
+  line-height:.9;
+  letter-spacing:-.06em;
+}
+.work-row:hover .work-name{
+  font-style:italic;
+}
+.work-preview{
+  max-height:0;overflow:hidden;
+  background:linear-gradient(150deg,#101010,#070707 65%,#171717);
+  display:grid;place-items:center;
+  font:10px var(--mono);letter-spacing:.12em;color:#555;
+  transition:max-height .8s cubic-bezier(.16,1,.3,1);
+}
+.work-row.is-open + .work-preview{max-height:2000px;}
+
+/* ABOUT  (+ the Poster page reuses this whole rolling-cube mechanism) */
+.about-page,
+.poster-cube-page{
+  position:relative;
+}
+.about-stick{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:100vh;
+  /* no min-height: a fixed panel taller than the viewport hides its overflow
+     with no way to scroll to it. The row shrinks instead. */
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(200px,1fr) minmax(320px,460px) minmax(200px,1fr);
+  gap:clamp(32px,7vw,120px);
+  align-items:center;
+  padding:110px 64px 40px;
+  z-index:2;
+}
+/* Fallback only — sizeLoopSpacer() overwrites this with a height derived from
+   the real face count as soon as the script runs. Hard-coding it here is what
+   broke the endless roll when the poster cube grew from four faces to seven:
+   the spacer stayed 24 viewport-heights while the loop started needing 35. */
+.about-cube-spacer{
+  height:2400vh;
+  width:1px;
+  pointer-events:none;
+}
+.about-copy{
+  position:relative;
+  z-index:4;
+}
+.about-copy.left{
+  text-align:left;
+}
+.about-copy.right{
+  text-align:right;
+}
+.about-copy .small{
+  font:10px var(--mono);
+  color:var(--muted);
+  margin-bottom:18px;
+  letter-spacing:.08em;
+}
+.about-copy h2{
+  font-size:clamp(28px,3.7vw,58px);
+  line-height:.92;
+  letter-spacing:-.055em;
+  max-width:360px;
+  transition:opacity .28s ease, transform .28s ease;
+}
+.about-copy.left h2,.about-copy.left p{
+  max-width:360px;
+}
+.about-copy.right h2,.about-copy.right p{
+  margin-left:auto;
+  max-width:360px;
+}
+.about-copy p{
+  margin-top:20px;
+  font:10px/1.72 var(--mono);
+  color:#7f7f7f;
+  transition:opacity .28s ease, transform .28s ease;
+}
+.about-copy a{
+  display:inline-block;
+  margin-top:26px;
+  padding-bottom:4px;
+  border-bottom:1px solid #666;
+  font:10px var(--mono);
+  letter-spacing:.08em;
+}
+/* The two CV buttons on the Resume face. Proper buttons rather than the
+   column's underlined 10px links, which were easy to miss: download is the
+   solid one, view the outlined one beside it. They wrap onto two rows when the
+   column is too narrow to hold both side by side. */
+.about-cv{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:26px;
+}
+.about-copy .about-cv .cv-btn{
+  display:inline-flex;
+  align-items:center;
+  margin:0;
+  padding:13px 20px;
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:999px;
+  font:11px/1 var(--mono);
+  letter-spacing:.16em;
+  white-space:nowrap;
+  transition:background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+.about-copy .about-cv .cv-view{
+  color:#fff;
+  background:transparent;
+}
+.about-copy .about-cv .cv-download{
+  color:#000;
+  background:#fff;
+  border-color:#fff;
+}
+.about-copy .about-cv .cv-view:hover,
+.about-copy .about-cv .cv-view:focus-visible{
+  color:#000;
+  background:#fff;
+}
+.about-copy .about-cv .cv-download:hover,
+.about-copy .about-cv .cv-download:focus-visible{
+  color:#fff;
+  background:transparent;
+}
+/* The CV viewer. The page darkens behind it while the CV grows out of the VIEW
+   CV button (script.js drives the zoom). The whole page is always in view:
+   the frame takes the largest size that fits the screen both ways - never
+   wider than 860px, never taller than the screen less a margin (its width
+   times 2716/1920, the picture's own proportion) - and the auto margins
+   centre it. Having to scroll to reach the bottom of a one-page CV was the
+   first version's mistake. */
+.cv-lb{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(7,7,7,0);
+  visibility:hidden;
+  pointer-events:none;
+  transition:background-color .5s ease, visibility 0s linear .56s;
+}
+.cv-lb.is-on{
+  background:rgba(7,7,7,.94);
+  visibility:visible;
+  pointer-events:auto;
+  transition:background-color .5s ease, visibility 0s;
+}
+.cv-lb-scroll{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:clamp(20px,4vh,48px) clamp(12px,3vw,48px);
+}
+.cv-lb-frame{
+  flex:0 0 auto;
+  width:min(860px, 100%, calc((100vh - 2 * clamp(20px,4vh,48px)) * .7069));
+  width:min(860px, 100%, calc((100dvh - 2 * clamp(20px,4dvh,48px)) * .7069));   /* a phone's visible height */
+  margin:auto 0;
+  background:#e4e2dc;               /* the CV's own paper, while the picture decodes */
+  box-shadow:0 40px 120px -40px rgba(0,0,0,.9);
+  transform-origin:center center;
+}
+.cv-lb-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.cv-lb.is-on .cv-lb-close{
+  opacity:1;
+  transform:scale(1) rotate(0);
+}
+/* A line this face has nothing for is removed, not left as a blank gap that
+   pushes the rest of the column off centre. */
+.about-copy .is-empty{
+  display:none;
+}
+/* The bio is a full paragraph. Ragged on the left, as the right column's short
+   lines are, it reads as a jagged edge for fifteen lines; set flush left
+   inside the same box it still sits against the right-hand side. */
+.about-copy.right p.is-long{
+  text-align:left;
+  /* six up from the column's 10px, and white rather than the column's grey;
+     the size is a ceiling - script.js brings it down only where the column
+     would otherwise run off a fixed panel, across or down */
+  font-size:var(--bio-size, 16px);
+  font-family:Arial, Helvetica, sans-serif;   /* the column's other lines stay mono */
+  color:#fff;
+  /* Set as the approved layout: single-spaced, one line per span, the block
+     exactly as wide as its longest line and still sitting on the right. */
+  line-height:1.15;
+  width:max-content;
+  max-width:100%;
+}
+.about-copy.right p.is-long .bio-line{
+  display:block;
+  white-space:nowrap;
+}
+/* A grid item will not shrink below its content by default; with lines that
+   cannot wrap, that would push the column wider than its track instead of
+   letting the script see the overflow and bring the size down. */
+.about-copy{
+  min-width:0;
+}
+.cube-zone{
+  /* This sits in a position:fixed, 100vh panel — anything that spills out of
+     the row is not merely off-screen, it is unreachable, because there is
+     nothing to scroll. So size the cube from the row height FIRST and the
+     column width second: min() takes whichever limit bites, and because the
+     winning value is a width, aspect-ratio derives a height that already
+     fits. (110px + 40px of .about-stick padding = the 150px below.) */
+  width:min(100%, 460px, calc((100vh - 150px) * 3 / 4));
+  aspect-ratio:3/4;
+  position:relative;
+  justify-self:center;
+  perspective:700px;
+  overflow:visible;
+}
+.cube{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.cube-face{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  background:#0d0d0d;
+  border:1px solid rgba(255,255,255,.04);
+  backface-visibility:hidden;
+  will-change:transform,filter;
+}
+.cube-face img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+/* Poster page only: these are finished pieces, so a crop removes part of the
+   work itself. The four run at two different ratios (0.778 and 0.707) against
+   a 3:4 face, so cover was cutting 3.6% off the sides of two of them and 5.7%
+   off the top AND bottom of the other two. Fit them whole and let the face
+   colour sit around them as a mat. The About cube keeps cover: those are
+   photographs, where filling the face is the point. */
+.poster-cube-page .cube-face img{
+  object-fit:contain;
+}
+.progress-rail{
+  position:absolute;
+  right:26px;
+  top:50%;
+  transform:translateY(-50%);
+  width:30px;
+  height:52vh;
+  z-index:5;
+}
+.progress-rail:before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;right:11px;
+  width:1px;background:var(--line);
+}
+.progress-label{
+  position:absolute;
+  right:0;
+  font:10px var(--mono);
+  color:#666;
+  transform:translateY(-50%);
+}
+/* No nth-child ladder here any more: it only ever positioned four labels, so
+   a fifth poster fell to top:auto and stacked on the first. buildRail() sets
+   each label's top from the real face count instead. */
+.progress-marker{
+  position:absolute;
+  right:7px;top:0;
+  width:10px;height:1px;background:#fff;
+  /* No transition: the marker is redrawn every frame from the scroll
+     position, exactly like the cube, which carries no transition either.
+     A 180ms ease on a per-frame property only makes the marker trail the
+     face it is reporting (measured 200px behind on a one-face jump), and
+     at the wrap it would rewind the full length of the rail. */
+}
+.text-fade-out{
+  opacity:0!important;
+  transform:translateY(8px)!important;
+}
+
+/* CONTACT */
+/* No backdrop image: the page sits on the site black like every other one. */
+.contact-body .page-shell,
+.contact-body .footer,
+.contact-body .topbar{
+  position:relative;
+  z-index:1;
+}
+.contact-body .topbar{
+  z-index:100;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  max-width:720px;
+  border-top:1px solid var(--line);
+  padding-top:54px;
+}
+.contact-info{
+  align-self:start;
+}
+.contact-block{
+  margin-bottom:34px;
+}
+.contact-label{
+  font:12px var(--mono);
+  color:var(--muted);
+  margin-bottom:12px;
+}
+.contact-link,.contact-text{
+  font:15px/1.7 var(--mono);
+  color:#eaeaea;
+}
+.contact-link:hover{
+  text-decoration:underline;
+}
+.social-icons{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+.social-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  color:#ddd;
+  transition:color .3s ease, transform .3s ease;
+}
+.social-icon svg{
+  width:26px;
+  height:26px;
+}
+.social-icon:hover{
+  color:#fff;
+  transform:translateY(-2px);
+}
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  margin-top:20px;
+  max-width:540px;
+}
+.form-row{
+  display:flex;
+  gap:24px;
+}
+.form-input{
+  flex:1;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+  font:14px var(--mono);
+  color:#fff;
+  outline:none;
+  transition:border-color .3s ease;
+  width:100%;
+  border-radius:0;
+}
+.form-input::placeholder{
+  color:#555;
+}
+.form-input:focus{
+  border-bottom-color:#fff;
+}
+.form-textarea{
+  resize:vertical;
+  min-height:90px;
+  margin-top:18px;
+}
+.form-submit{
+  align-self:flex-start;
+  background:#fff;
+  border:none;
+  padding:12px 28px;
+  font:10px var(--mono);
+  color:#050505;
+  cursor:pointer;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:bold;
+  transition:opacity .3s ease;
+  margin-top:8px;
+}
+.form-submit:hover{
+  opacity:0.85;
+}
+/* CONTACT — two columns under the title: a lead line, the email with a copy
+   button, social links as rows and three short facts on the left; the form
+   in its own outlined panel on the right. */
+.ct-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(40px,7vw,120px);
+  align-items:start;
+  border-top:1px solid var(--line);
+  padding-top:clamp(36px,5vh,54px);
+}
+.ct-lead{
+  max-width:620px;
+  margin-bottom:clamp(36px,5vh,56px);
+  font:400 clamp(22px,2.2vw,34px)/1.25 Arial, Helvetica, sans-serif;
+  letter-spacing:-.01em;
+  color:#f2f2ee;
+}
+.ct-block{
+  margin-bottom:clamp(28px,4vh,40px);
+}
+.ct-email{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px 18px;
+}
+.ct-email-link{
+  font:700 clamp(18px,1.8vw,28px)/1.2 Arial, Helvetica, sans-serif;
+  color:#fff;
+  word-break:break-all;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  transition:border-color .3s ease;
+}
+.ct-email-link:hover{ border-bottom-color:#fff; }
+.ct-copy{
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  background:transparent;
+  color:#ddd;
+  font:10px var(--mono);
+  letter-spacing:.14em;
+  cursor:pointer;
+  transition:background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.ct-copy:hover,
+.ct-copy.is-done{
+  background:#fff;
+  border-color:#fff;
+  color:#050505;
+}
+.ct-social{
+  list-style:none;
+  margin:0;
+  padding:0;
+  max-width:560px;
+  border-top:1px solid var(--line);
+}
+.ct-social a{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  font:14px var(--mono);
+  color:#eaeaea;
+  transition:padding-left .35s cubic-bezier(.22,1,.36,1), color .3s ease;
+}
+.ct-handle{ color:var(--muted); }
+.ct-arrow{ transition:transform .35s cubic-bezier(.22,1,.36,1); }
+.ct-social a:hover{ padding-left:10px; color:#fff; }
+.ct-social a:hover .ct-arrow{ transform:translate(3px,-3px); }
+.ct-facts{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  padding-top:clamp(8px,2vh,20px);
+}
+.ct-facts .ct-block{ margin-bottom:0; }
+.ct-text{
+  font:12px/1.8 var(--mono);
+  color:#cfcfcf;
+}
+.ct-form-panel{
+  padding:clamp(24px,2.6vw,40px);
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:rgba(255,255,255,.02);
+}
+.ct-form-panel .contact-form{
+  max-width:none;
+  margin-top:8px;
+}
+.ct-form-panel .form-textarea{
+  min-height:150px;
+  margin-top:0;
+}
+.form-select{
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+  background-image:linear-gradient(45deg, transparent 50%, #888 50%), linear-gradient(135deg, #888 50%, transparent 50%);
+  background-position:calc(100% - 12px) 55%, calc(100% - 7px) 55%;
+  background-size:5px 5px, 5px 5px;
+  background-repeat:no-repeat;
+}
+.form-select option{ background:#111; color:#fff; }
+@media(max-width:1000px){
+  .ct-grid{ grid-template-columns:minmax(0,1fr); }
+  .ct-form-panel{ max-width:640px; }
+}
+@media(max-width:560px){
+  .ct-facts{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ct-social a{ grid-template-columns:96px minmax(0,1fr) auto; font-size:13px; }
+}
+@media(max-width: 600px) {
+  .form-row{
+    flex-direction:column;
+    gap:24px;
+  }
+}
+.footer{
+  margin:0 26px;
+  padding:18px 0 28px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  font:10px var(--mono);
+  color:#666;
+}
+
+@media(max-width:900px){
+  .topnav{gap:24px;font-size:10px}
+  .home-wrap{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .home-side{
+    min-height:auto;
+    gap:22px;
+  }
+  .home-image-card{
+    order:-1;
+    aspect-ratio:4/5;
+  }
+  .about-stick{
+    grid-template-columns:1fr;
+    /* Stacked on a phone this is three rows inside a position:fixed 100vh box,
+       so anything that does not fit is simply unreachable — you cannot scroll
+       to it. Give the two copy blocks their natural height and hand the cube
+       whatever is left, and drop the 720px floor that was forcing the whole
+       block taller than a short phone viewport in the first place. */
+    grid-template-rows:auto minmax(0,1fr) auto;
+    min-height:0;
+    gap:clamp(10px,2vh,20px);
+    padding:clamp(74px,10vh,98px) 22px calc(clamp(18px,3vh,26px) + env(safe-area-inset-bottom, 0px));
+    align-items:center;
+  }
+  .cube-zone{
+    /* height-driven here: the cube shrinks into the leftover row instead of
+       pushing the copy under it off the bottom of the screen. width:auto lets
+       the max-width clamp transfer back through aspect-ratio, so it stays 3:4. */
+    --cw:min(72vw,340px);
+    width:auto;
+    /* height is capped BOTH by the leftover row and by the height a --cw-wide
+       3:4 box would need, so the ratio never gets squashed either way */
+    height:min(100%, calc(var(--cw) * 4 / 3));
+    max-width:var(--cw);
+    /* overflow stays visible, exactly like desktop: the faces folding away
+       above and below the front one IS the effect. The copy is kept readable
+       by its own scrim below, not by clipping the cube. */
+    margin:0 auto;
+    justify-self:center;
+    align-self:center;
+    order:2;
+  }
+  /* Stacked layout means the cube folds out over the copy above and below it.
+     Desktop has empty side columns to spill into; a phone does not. Rather
+     than clip the cube (which flattens the whole effect), lay a soft scrim of
+     the page colour behind each copy block so the text stays readable and the
+     roll still shows through around it. */
+  .about-copy{
+    isolation:isolate;
+  }
+  .about-copy::before{
+    content:"";
+    position:absolute;
+    inset:-12px -22px;
+    z-index:-1;
+    pointer-events:none;
+    background:radial-gradient(115% 130% at 50% 50%,
+      rgba(5,5,5,.94) 40%, rgba(5,5,5,.78) 68%, rgba(5,5,5,0) 100%);
+  }
+  .about-copy.left{
+    order:1;
+  }
+  .about-copy.right{
+    order:3;
+    text-align:left;
+  }
+  .about-copy.right h2,.about-copy.right p{
+    margin-left:0;
+  }
+  /* stacked, the right column reads left-aligned, so the buttons do too */
+  .about-cv{
+    justify-content:flex-start;
+  }
+  .progress-rail{display:none}
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .work-row{
+    grid-template-columns:44px 1fr auto;
+  }
+  .work-cat{display:none}
+}
+
+
+/* ==========================================
+   V10 DESIGN START
+   cleaner home + static brand
+   ========================================== */
+
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 26px;
+  z-index:100;
+  background:linear-gradient(to bottom,rgba(5,5,5,.92),rgba(5,5,5,.56),rgba(5,5,5,.08),transparent);
+  backdrop-filter:blur(4px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* The header - the name and the menu - is set in Arial Black. Windows and
+   macOS both have it; where it is missing (most phones) the heaviest Arial or
+   Helvetica on the device stands in, which is why the weight is spelled out. */
+.brand-static{
+  font-family:'Arial Black', 'Arial Bold', Gadget, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color:#f2f2ee;
+  white-space:nowrap;
+  user-select:none;
+  pointer-events:none;
+}
+
+.topnav{
+  display:flex;
+  align-items:center;
+  gap:48px;
+  justify-content:flex-end;
+  font-family:'Arial Black', 'Arial Bold', Gadget, Arial, Helvetica, sans-serif;
+  font-weight:900;
+  font-size: 16px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-left:auto;
+}
+
+.topnav a{
+  color:#8f8f8f;
+  transition:color .22s ease;
+}
+
+.topnav a:hover,
+.topnav a.active{
+  color:#fff;
+}
+
+/* ==========================================
+   HOME — INFINITE VIDEO REEL
+   Four looping videos stacked full-screen. JS parks each one
+   on a virtual loop so the set keeps coming around forever;
+   the tall spacer only gives the wheel something to move.
+   ========================================== */
+.home-video-body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* Home only: hide the native scrollbar (scrolling still works) */
+html:has(body.home-video-body){
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+html:has(body.home-video-body)::-webkit-scrollbar{
+  display:none;
+}
+body.home-video-body::-webkit-scrollbar{
+  display:none;
+}
+
+.home-reel{
+  position:relative;
+  background:#000;
+}
+.home-reel-stage{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  overflow:hidden;
+  pointer-events:none;
+  background:#000;
+}
+.home-slide{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  will-change:transform;
+  backface-visibility:hidden;
+}
+.home-video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  /* footage stays exactly as graded — no filter / blend */
+}
+/* MVI_8495 is delivered already graded to black & white in the file;
+   this only guarantees the look if the source is ever swapped back. */
+.home-video-mono{ filter:grayscale(1); }
+/* On upright screens script.js makes each slide a band exactly as tall as the
+   clip's 16:9 picture across the full width, so cover shows every frame whole
+   (bar the pixel of overlap between bands) with the clips touching. */
+.home-reel-spacer{
+  width:1px;
+  height:16000vh; /* JS overrides this on load; kept as a fallback */
+  pointer-events:none;
+}
+
+/* 3D intro canvas — the transition-image cylinder; GSAP fades it out.
+   Opaque black fill so the video reel underneath stays fully hidden
+   until the fade reveals it at the end of the intro. */
+#canvas-container{
+  position:fixed;
+  inset:0;   /* the window as it is: 100vh on a phone is taller while its toolbars show */
+  z-index:10;
+  background:#000;
+  pointer-events:none;
+}
+#webgl-canvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* Intro preloader: the TANTAMTRANG title flickers, then GSAP fades it */
+#camcorder-preloader{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#050505;
+  color:#fff;
+  font-family:var(--mono);
+}
+.camcorder-ui{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.loading-title{
+  /* Arial Black, like the header, with the same fallbacks for phones */
+  font-family:'Arial Black', 'Arial Bold', Gadget, Arial, Helvetica, sans-serif;
+  font-style:normal;
+  font-weight:900;
+  font-size:clamp(20px,3.4vw,44px);
+  letter-spacing:.14em;
+  text-align:center;
+  z-index:2;
+  animation:shakeFlash 3s infinite;
+}
+@keyframes shakeFlash{
+  0%   { transform:translate(0,0);      opacity:1;   }
+  2%   { transform:translate(-4px,2px); opacity:.3;  }
+  4%   { transform:translate(4px,-2px); opacity:1;   }
+  6%   { transform:translate(-4px,-2px);opacity:.1;  }
+  8%   { transform:translate(4px,2px);  opacity:1;   }
+  10%  { transform:translate(0,0);      opacity:1;   }
+  45%  { opacity:1; }
+  46%  { opacity:0; }
+  48%  { opacity:1; }
+  100% { transform:translate(0,0);      opacity:1;   }
+}
+
+/* Short phones: the About / Poster copy tightens up so the cube keeps a
+   usable size and nothing runs off the bottom of the fixed panel. */
+@media(max-width:900px) and (max-height:740px){
+  .about-copy h2{
+    font-size:clamp(21px,5.6vw,30px);
+  }
+  .about-copy .small{
+    margin-bottom:9px;
+  }
+  .about-copy p{
+    margin-top:11px;
+    font-size:9px;
+    line-height:1.6;
+  }
+  .about-copy.right p.is-long{
+    font-size:var(--bio-size, 15px);   /* six up from 9px here too */
+  }
+  .about-copy a{
+    margin-top:14px;
+  }
+  .about-cv{
+    margin-top:14px;
+  }
+  .cube-zone{
+    --cw:min(60vw,300px);
+  }
+}
+
+@media(max-width:800px){
+  .topbar{
+    padding:0 18px;
+    height:66px;
+  }
+
+  .brand-static{
+    font-size:12px;
+  }
+
+  .topnav{
+    gap:16px;
+    font-size:10px;
+  }
+}
+
+/* Narrow phones: Arial Black is far wider than the header's old face, and at
+   360px the name ran into the menu; at 320px the menu ran 31px off the
+   screen. Smaller type, tighter tracking and gaps keep all of it on one line
+   with room between the two. */
+@media(max-width:420px){
+  .topbar{
+    padding:0 14px;
+  }
+  .brand-static{
+    font-size:11px;
+    letter-spacing:.02em;
+  }
+  .topnav{
+    gap:10px;
+    font-size:9px;
+    letter-spacing:.05em;
+  }
+}
+
+/* ==========================================
+   WORKS — INSIDE-OUT LABEL CYLINDER
+   All work images sit on one rounded-rect "label" wrapped
+   around a vertical cylinder. We stand INSIDE it: the work
+   facing us sits flat and frontal; the rest curve away to
+   the sides as the cylinder spins with scroll.
+   ========================================== */
+.works-reel{
+  position:relative;
+  background:#000;
+  cursor:grab;
+  touch-action:pan-y;
+}
+.works-reel.is-dragging{
+  cursor:grabbing;
+  user-select:none;
+}
+.works-reel.reel-link-active:not(.is-dragging){
+  cursor:pointer;
+}
+.reel-scroll-spacer{
+  /* Fallback only — sizeLoopSpacer() sets the real height from WORKS.length.
+     At seven works this constant left just six viewport-heights of slack, so
+     a ninth work would have killed the loop the same way it died on Poster. */
+  height:4200vh;
+  width:1px;
+  pointer-events:none;
+}
+
+.reel-scene{
+  position:fixed;
+  inset:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  pointer-events:none;
+  /* Fallback only. layout() sets the real focal length in proportion to the
+     card width, so the scene keeps one shape at every screen size. A long
+     lens is what lets five frames fit: the outermost pair sits nearest the
+     camera, and a short one throws them sideways off the edges. */
+  perspective:1700px;
+}
+.reel-ring{
+  position:relative;
+  width:1px;
+  height:1px;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+/* Each frame is now just that: a hairline of white on black, holding nothing
+   but the water the cursor stirs. No photograph, no wash, no gradient. */
+.reel-card{
+  position:absolute;
+  top:50%;
+  left:50%;
+  overflow:hidden;                       /* the surface is clipped by the frame */
+  background:#292929;
+  border:2px solid rgba(255,255,255,.22);
+  border-radius:22px;
+  backface-visibility:hidden;
+  will-change:transform, opacity, filter;
+  /* .reel-scene is pointer-events:none so the whole reel stays draggable as
+     one surface. Only the frontal frame opts back in, which is what keeps the
+     water to the one frame the cursor can actually reach. */
+  pointer-events:none;
+}
+.reel-card.is-front{
+  pointer-events:auto;
+}
+
+/* The water. A small grid stretched over the frame — the upscale is doing
+   real work here: it is what turns a 116-cell-wide simulation into something
+   that reads as a soft surface instead of steps. Never takes the pointer, so
+   offsetX/offsetY always arrive measured against the frame itself. */
+.reel-card-water{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+  z-index:2;                 /* over the picture and its shade, under the words */
+}
+
+/* A frame with a picture in it. The picture fills the frame whatever shape
+   the file is (object-position is set per work from script.js), and the
+   frame's border, radius and overflow clip it exactly as they clip the water.
+   The shade is there for the words, not for looks: measured under the title,
+   the brightest tenth of the Trung Thu poster sat at 187 of 255 and its
+   number corner at 237 - white type straight on top of that is not readable.
+   Darkest at the foot where the title and tags sit, a lighter band across the
+   top for the number, and clear through the middle of the picture. */
+.reel-card-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  scale:1;
+  translate:0 0;
+  /* the same two curves the words use, so picture and words move as one */
+  transition:scale 620ms cubic-bezier(.16,.84,.32,1),
+             translate 260ms cubic-bezier(.16,.84,.32,1);
+}
+.reel-card-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 24%),
+    linear-gradient(to top, rgba(0,0,0,.74) 0%, rgba(0,0,0,.5) 32%, rgba(0,0,0,0) 64%);
+}
+
+/* ---------------------------------------------------------------------
+   Everything written on a frame sits in one element, and that element is
+   the one that zooms and leans under the cursor - so the number, the title
+   and the footer line move as one piece instead of three effects that have
+   to be kept in step. Only the frame at dead centre is fully written out;
+   the others hold their words back and let them rise into place as they
+   arrive at the middle.
+   --------------------------------------------------------------------- */
+.reel-card-body{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  padding:clamp(20px,2.1vw,30px);
+  color:#fff;
+  /* The water is white and so is the type; a dark halo keeps every line
+     readable once the surface is busy, and living on the wrapper it covers
+     all of them at once. */
+  text-shadow:0 0 20px rgba(0,0,0,.92), 0 0 7px rgba(0,0,0,.85);
+  backface-visibility:hidden;
+  pointer-events:none;                   /* never stands between cursor and water */
+  scale:1;
+  transform:none;
+  /* Zoom and lean are split across two properties so each keeps its own
+     timing: the zoom is slow and cinematic, the lean has to answer the
+     cursor quickly or it reads as detached from the hand moving it. */
+  transition:scale 620ms cubic-bezier(.16,.84,.32,1),
+             transform 260ms cubic-bezier(.16,.84,.32,1);
+}
+
+.wk-num{
+  font:400 clamp(10px,1.05vw,13px)/1 var(--mono);
+  letter-spacing:.14em;
+  color:rgba(255,255,255,.55);
+  opacity:.78;
+  transition:opacity 460ms cubic-bezier(.16,.84,.32,1);
+}
+.reel-card.is-front .wk-num{ opacity:1; }
+.wk-num b{
+  font-weight:700;
+  font-size:1.45em;
+  color:#fff;
+  letter-spacing:.06em;
+}
+
+/* Title block sits low in the frame, with room kept below it for the row
+   that runs along the bottom edge. */
+.wk-mid{
+  margin-top:auto;
+  margin-bottom:clamp(40px,4.8vw,66px);
+}
+.wk-title{
+  font:700 clamp(22px,3.3vw,50px)/0.98 Arial, Helvetica, sans-serif;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  color:#fff;
+  opacity:.84;
+  transition:opacity 460ms cubic-bezier(.16,.84,.32,1);
+}
+.reel-card.is-front .wk-title{ opacity:1; }
+
+/* Rule and description belong to the centred frame only - they fade in as it
+   arrives and the three keywords fade out to make room, so a frame reaching
+   the middle trades one for the other instead of popping. */
+.wk-rule,
+.wk-desc{
+  opacity:0;
+  translate:0 8px;
+  transition:opacity 420ms cubic-bezier(.16,.84,.32,1),
+             translate 520ms cubic-bezier(.16,.84,.32,1);
+}
+.reel-card.is-front .wk-rule,
+.reel-card.is-front .wk-desc{ opacity:1; translate:0 0; }
+.wk-rule{
+  display:block;
+  width:clamp(22px,2.4vw,34px);
+  height:2px;
+  background:#fff;
+  margin:clamp(12px,1.5vw,20px) 0 clamp(10px,1.2vw,15px);
+}
+.wk-desc{
+  font:400 clamp(10px,1.1vw,14px)/1.6 Arial, Helvetica, sans-serif;
+  color:rgba(255,255,255,.74);
+  letter-spacing:.01em;
+}
+
+.wk-tags,
+.wk-explore{
+  position:absolute;
+  left:clamp(20px,2.1vw,30px);
+  right:clamp(20px,2.1vw,30px);
+  bottom:clamp(20px,2.1vw,30px);
+  transition:opacity 420ms cubic-bezier(.16,.84,.32,1);
+}
+.wk-tags{
+  font:400 clamp(8px,.86vw,10px)/1.95 var(--mono);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.66);
+  opacity:1;
+}
+.reel-card.is-front .wk-tags{ opacity:0; }
+
+.wk-explore{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  font:400 clamp(8px,.86vw,10px)/1 var(--mono);
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.8);
+  opacity:0;
+}
+.reel-card.is-front .wk-explore{ opacity:1; }
+.wk-arrow{
+  width:clamp(30px,3.2vw,46px);
+  height:8px;
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1;
+}
+
+@media (hover:hover) and (pointer:fine){
+  /* Rotation and scale both turn about the element's own centre, so the whole
+     block zooms and tips towards the cursor without drifting off the middle
+     of the frame - the point of doing it with rotation rather than a nudge.
+     The scale is gentler than it was when only a word moved: this block runs
+     nearly the full frame, and 11% of that would push the corners past the
+     padding and into the border. */
+  .reel-card.is-front:hover .reel-card-body{
+    scale:1.05;
+    transform:perspective(760px)
+              rotateY(calc(var(--tx,0) * 8deg))
+              rotateX(calc(var(--ty,0) * -8deg));
+  }
+  /* The picture goes with them: it zooms in with the words and slides the
+     other way from the cursor, the way a view through a window shifts when
+     you lean towards one side of it - the words tip forward, the picture
+     reads as further back. Inside the frame only: the frame, its border and
+     its radius do not move, and overflow clips the zoomed picture. The drift
+     (2.5% of the frame) stays inside the zoom's 4% margin on every side, so
+     no edge of the picture ever comes into view. */
+  .reel-card.is-front:hover .reel-card-bg{
+    scale:1.08;
+    translate:calc(var(--tx,0) * -2.5%) calc(var(--ty,0) * -2.5%);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   The word on the back wall. The frame at the centre writes its own name
+   across the room, huge and nearly the colour of the wall, and each new
+   frame arriving brings its name up from below.
+   --------------------------------------------------------------------- */
+.reel-ghost{
+  position:fixed;
+  inset:0;
+  z-index:4;                 /* under .reel-scene (10): the cards stand in front */
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  pointer-events:none;
+}
+.reel-ghost-word{
+  /* A ceiling only; fitGhost() measures the actual word and scales down from
+     here whenever it would run off the sides. The height term is what stops a
+     short wide window - 1920x720, or any laptop carrying three toolbars - from
+     sizing the word off 17% of a very wide screen and driving it up under the
+     header; on an ordinary 16:9 or 16:10 it is the width that decides, as
+     before. */
+  font:800 clamp(72px,min(17vw,30vh),280px)/0.9 Arial, Helvetica, sans-serif;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  color:#1e1e1e;
+  white-space:nowrap;
+  position:relative;
+  display:inline-block;
+  opacity:0;
+  /* Sits high, above the tops of the frames rather than square behind them -
+     the frames are carried down to meet it (see REEL_DROP in script.js), and
+     between the two the word now shows a clear band of itself instead of the
+     28px that used to peek out on a 1080p screen and the 0px on a 1366x768.
+     Written against the word's own size (half a line box is .45em at this
+     line-height) so it holds that height whatever the word does to the type
+     size. */
+  align-self:start;
+  /* ...and the floor keeps it clear of the header when 20% of the height is
+     less than the word is tall. */
+  margin-top:max(56px,calc(20vh - .45em));
+}
+.reel-ghost-sharp{
+  display:block;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 44%,transparent 76%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 44%,transparent 76%);
+}
+.reel-ghost-blur{
+  position:absolute;
+  left:0;
+  top:0;
+  filter:blur(11px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.9) 64%,rgba(0,0,0,.4) 100%);
+  mask-image:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.9) 64%,rgba(0,0,0,.4) 100%);
+}
+.reel-ghost-word.is-in{
+  animation:reel-ghost-in 860ms cubic-bezier(.16,.84,.32,1) both;
+}
+@keyframes reel-ghost-in{
+  from{ opacity:0; transform:translateY(34px) scale(.972); }
+  to  { opacity:1; transform:none; }
+}
+
+/* The rim of the pool. It used to be the only thing the frames stood on, so it
+   carried the weight on its own; now there is water in it, and a line at .075
+   read as a stray stroke drawn across the reflections rather than as an edge
+   behind them. */
+.reel-stage{
+  position:fixed;
+  left:50%;
+  top:83.5%;
+  width:min(1460px,94vw);
+  height:min(300px,25vh);
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.042);
+  border-radius:50%;
+  z-index:5;
+  pointer-events:none;
+}
+
+/* ---------------------------------------------------------------------
+   The water the frames stand in. One canvas across the bottom of the
+   screen, above the wall word and below the frames themselves - the
+   reflections live entirely under each frame's foot, so they never have to
+   paint over anything.
+   Drawn at half resolution and scaled back up: a reflection is the one
+   thing in the picture that is allowed to be soft, and the browser's own
+   upscale does most of that for free.
+   --------------------------------------------------------------------- */
+.reel-reflect{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  z-index:6;                 /* over .reel-ghost (4) and .reel-stage (5) */
+  pointer-events:none;
+  filter:blur(1.4px);
+}
+@media(max-width:900px){
+  /* Same line as .reel-stage: below this the frames run off both edges and
+     there is no room under them for a surface to read as one. */
+  .reel-reflect{ display:none; }
+}
+
+/* Pager. */
+.reel-pager{
+  position:fixed;
+  left:50%;
+  bottom:clamp(28px,4.4vw,62px);
+  transform:translateX(-50%);
+  z-index:14;
+  display:flex;
+  align-items:center;
+  gap:clamp(14px,1.8vw,24px);
+}
+/* Previous / next, out at the sides of the room, level with the middle of the
+   frames: 50% of the screen plus the same 5.5vh the ring is dropped by
+   (REEL_DROP in script.js), so they stay on the frames' centre line at any
+   height. Bigger than they were in the pager - a 17px chevron alone at the
+   edge of a wide screen is easy to miss - with a generous hit area around it. */
+.reel-arrow{
+  position:fixed;
+  top:calc(50% + 5.5vh);
+  z-index:14;
+  width:56px;
+  height:56px;
+  margin-top:-28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:none;
+  border:0;
+  padding:0;
+  font:300 44px/1 Arial, Helvetica, sans-serif;
+  color:rgba(255,255,255,.5);
+  cursor:pointer;
+  transition:color .3s ease, transform .3s ease;
+}
+.reel-arrow-prev{ left:var(--reel-arrow-inset, clamp(12px,4.5vw,96px)); }
+.reel-arrow-next{ right:var(--reel-arrow-inset, clamp(12px,4.5vw,96px)); }
+.reel-arrow:hover,
+.reel-arrow:focus-visible{ color:#fff; }
+.reel-arrow-prev:hover{ transform:translateX(-4px); }
+.reel-arrow-next:hover{ transform:translateX(4px); }
+.reel-dots{ display:flex; align-items:center; gap:clamp(9px,1.1vw,14px); }
+.reel-dot{
+  width:6px;
+  height:6px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.36);
+  border-radius:50%;
+  background:none;
+  cursor:pointer;
+  transition:background-color .3s ease, border-color .3s ease, transform .3s ease;
+}
+.reel-dot:hover{ border-color:rgba(255,255,255,.8); }
+.reel-dot.is-on{ background:#fff; border-color:#fff; transform:scale(1.15); }
+
+/* Marker under the current section, scoped to this page so no other page's
+   header moves. */
+.works-page .topnav a.active{ position:relative; }
+.works-page .topnav a.active::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-9px;
+  width:3px;
+  height:3px;
+  margin-left:-1.5px;
+  border-radius:50%;
+  background:#fff;
+}
+
+@media(max-width:900px){
+  .reel-stage{ display:none; }
+  /* 52, not 40: this rule also catches a phone held sideways, where 16% of a
+     390px height is less than the word is tall and the floor is the only thing
+     between the capitals and the header. */
+  .reel-ghost-word{ margin-top:max(52px,calc(16vh - .45em)); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reel-card-body,
+  .wk-num,.wk-title,.wk-rule,.wk-desc,.wk-tags,.wk-explore{ transition:none; }
+  .reel-card.is-front:hover .reel-card-body{ scale:1; transform:none; }
+  .reel-card-bg{ transition:none; }
+  .reel-card.is-front:hover .reel-card-bg{ scale:1; translate:none; }
+  .reel-ghost-word.is-in{ animation:none; opacity:1; }
+  /* The surface still reflects, it just stops moving - see reflectSync(). */
+  .reel-reflect{ filter:none; }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qj70gLelVXg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\binhl\\Desktop\\New folder (3) - Copy\\tandao\\TanTamTrang\\TanTamTrang.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\binhl\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.13\\microsoft.aspnetcore.openapi.10.0.13.nupkg.sha512",
+    "C:\\Users\\binhl\\.nuget\\packages\\microsoft.openapi\\2.12.2\\microsoft.openapi.2.12.2.nupkg.sha512"
+  ],
+  "logs": []
+}

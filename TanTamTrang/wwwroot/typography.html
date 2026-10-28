@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TYPOGRAPHY - TTT</title>
+  <meta name="description" content="Typography work by TTT: type layouts and type-led design.">
+  <link rel="canonical" href="https://tantamtrang.com/typography.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/favicon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TanTamTrang">
+  <meta property="og:title" content="TYPOGRAPHY - TTT">
+  <meta property="og:description" content="Typography work by TTT: type layouts and type-led design.">
+  <meta property="og:url" content="https://tantamtrang.com/typography.html">
+  <meta property="og:image" content="https://tantamtrang.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css?v=150">
+  <link rel="stylesheet" href="theme.css?v=35">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand-static" href="index.html">TanTamTrang</a>
+  <nav class="topnav">
+    <a href="about.html">About</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="poster-page">
+  <section class="poster-hero">
+   
+    <h1 class="page-title poster-title">TYPOGRAPHY</h1>
+    <p class="poster-intro">Five books and publications, read spread by spread. Click a page or use the arrows.</p>
+    <a class="poster-back" href="works.html">← Back to Works</a>
+  </section>
+
+  <!-- Book 01: pages 2-15 of images/book/pNN.jpg, shown two at a time. The
+       script below builds the spreads and the thumbnail row. -->
+  <section class="ty-book" data-prefix="images/book/p" data-from="2" data-to="15" aria-label="Typography book">
+    <header class="ty-head">
+      <span class="ty-index">01</span>
+      <h2>Typography Book</h2>
+      <span class="ty-meta">14 pages · 7 spreads</span>
+    </header>
+
+    <div class="ty-spread" tabindex="0" aria-live="polite">
+      <button class="ty-page ty-page-left" type="button" aria-label="Previous spread"><img alt="" decoding="async"></button>
+      <button class="ty-page ty-page-right" type="button" aria-label="Next spread"><img alt="" decoding="async"></button>
+    </div>
+
+    <div class="ty-bar">
+      <button class="ty-btn ty-prev" type="button" aria-label="Previous spread">←</button>
+      <span class="ty-count"><b class="ty-num">01</b> / <span class="ty-total">07</span></span>
+      <button class="ty-btn ty-next" type="button" aria-label="Next spread">→</button>
+    </div>
+
+  </section>
+
+  <!-- Book 02: pages 2-31 of images/book2/pNN.jpg, shown two at a time. The
+       script below builds the spreads and the thumbnail row. -->
+  <section class="ty-book" data-prefix="images/book2/p" data-from="2" data-to="31" aria-label="Type specimen book">
+    <header class="ty-head">
+      <span class="ty-index">02</span>
+      <h2>Type Specimen</h2>
+      <span class="ty-meta">30 pages · 15 spreads</span>
+    </header>
+
+    <div class="ty-spread" tabindex="0" aria-live="polite">
+      <button class="ty-page ty-page-left" type="button" aria-label="Previous spread"><img alt="" decoding="async"></button>
+      <button class="ty-page ty-page-right" type="button" aria-label="Next spread"><img alt="" decoding="async"></button>
+    </div>
+
+    <div class="ty-bar">
+      <button class="ty-btn ty-prev" type="button" aria-label="Previous spread">←</button>
+      <span class="ty-count"><b class="ty-num">01</b> / <span class="ty-total">15</span></span>
+      <button class="ty-btn ty-next" type="button" aria-label="Next spread">→</button>
+    </div>
+
+  </section>
+
+  <!-- Book 03: pages 2-8 of images/book3/pNN.jpg. Each PDF page is already a
+       whole landscape spread, so data-single shows them one at a time. -->
+  <section class="ty-book ty-book-single" data-single data-prefix="images/book3/p" data-from="2" data-to="8" aria-label="Design Citizenship, Assessment 3">
+    <header class="ty-head">
+      <span class="ty-index">03</span>
+      <h2>Design Citizenship</h2>
+      <span class="ty-meta">7 spreads</span>
+    </header>
+
+    <div class="ty-spread" tabindex="0" aria-live="polite">
+      <button class="ty-page ty-page-single" type="button" aria-label="Previous or next page"><img alt="" decoding="async"></button>
+    </div>
+
+    <div class="ty-bar">
+      <button class="ty-btn ty-prev" type="button" aria-label="Previous page">←</button>
+      <span class="ty-count"><b class="ty-num">01</b> / <span class="ty-total">07</span></span>
+      <button class="ty-btn ty-next" type="button" aria-label="Next page">→</button>
+      <a class="ty-full" href="images/book3/p02.jpg" target="_blank" rel="noopener">Full size ↗</a>
+    </div>
+
+  </section>
+
+  <!-- Book 04: pages 2-7 of images/book4/pNN.jpg. Each PDF page is already a
+       whole landscape spread, so data-single shows them one at a time. -->
+  <section class="ty-book ty-book-single" data-single data-prefix="images/book4/p" data-from="2" data-to="7" aria-label="Designing in Relation, Assessment 2">
+    <header class="ty-head">
+      <span class="ty-index">04</span>
+      <h2>Designing in Relation</h2>
+      <span class="ty-meta">6 pages</span>
+    </header>
+
+    <div class="ty-spread" tabindex="0" aria-live="polite">
+      <button class="ty-page ty-page-single" type="button" aria-label="Previous or next page"><img alt="" decoding="async"></button>
+    </div>
+
+    <div class="ty-bar">
+      <button class="ty-btn ty-prev" type="button" aria-label="Previous page">←</button>
+      <span class="ty-count"><b class="ty-num">01</b> / <span class="ty-total">06</span></span>
+      <button class="ty-btn ty-next" type="button" aria-label="Next page">→</button>
+      <a class="ty-full" href="images/book4/p02.jpg" target="_blank" rel="noopener">Full size ↗</a>
+    </div>
+
+  </section>
+
+  <!-- Book 05: pages 2-13 of images/book5/pNN.jpg. Each PDF page is already a
+       whole landscape spread, so data-single shows them one at a time. -->
+  <section class="ty-book ty-book-single" data-single data-prefix="images/book5/p" data-from="2" data-to="13" aria-label="Music Festival magazine">
+    <header class="ty-head">
+      <span class="ty-index">05</span>
+      <h2>Music Festival</h2>
+      <span class="ty-meta">12 spreads</span>
+    </header>
+
+    <div class="ty-spread" tabindex="0" aria-live="polite">
+      <button class="ty-page ty-page-single" type="button" aria-label="Previous or next page"><img alt="" decoding="async"></button>
+    </div>
+
+    <div class="ty-bar">
+      <button class="ty-btn ty-prev" type="button" aria-label="Previous page">←</button>
+      <span class="ty-count"><b class="ty-num">01</b> / <span class="ty-total">12</span></span>
+      <button class="ty-btn ty-next" type="button" aria-label="Next page">→</button>
+      <a class="ty-full" href="images/book5/p02.jpg" target="_blank" rel="noopener">Full size ↗</a>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a href="works.html">Back to Works ↑</a>
+</footer>
+
+<script src="script.js?v=151"></script>
+<script src="spread-viewer.js?v=3"></script>
+</body>
+</html>

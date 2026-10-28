@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>3D / VIDEO - TTT</title>
+  <meta name="description" content="3D and motion work by TTT: renders, animation and video projects.">
+  <link rel="canonical" href="https://tantamtrang.com/3d-video.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/favicon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TanTamTrang">
+  <meta property="og:title" content="3D / VIDEO - TTT">
+  <meta property="og:description" content="3D and motion work by TTT: renders, animation and video projects.">
+  <meta property="og:url" content="https://tantamtrang.com/3d-video.html">
+  <meta property="og:image" content="https://tantamtrang.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css?v=150">
+  <link rel="stylesheet" href="theme.css?v=35">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand-static" href="index.html">TanTamTrang</a>
+  <nav class="topnav">
+    <a href="about.html">About</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="poster-page vid-page">
+  <section class="poster-hero">
+    
+    <h1 class="page-title poster-title">3D / VIDEO</h1>
+    <p class="poster-intro">Two moving pieces, each running on a continuous loop.</p>
+    <a class="poster-back" href="works.html">← Back to Works</a>
+  </section>
+
+  <!-- Both clips are 30s loops, silent, on the repository's "media" release
+       rather than in the site itself, so the pages stay light. Each is there
+       twice: 1080p under this name and a 720p copy named -720.mp4, which
+       script.js swaps in on phones, tablets and slow connections - and so
+       neither autoplays or preloads here, or a phone would start on the 1080p
+       file before the script could choose. They play only while on screen and
+       pause when scrolled away or when the tab is hidden. muted + playsinline
+       is what lets a phone play them without a tap. -->
+  <section class="vid-grid">
+    <figure class="vid-item vid-a">
+      <div class="vid-frame">
+        <video class="vid" src="https://github.com/bachbinh04/tantamtrang/releases/download/media/fire.mp4" width="1920" height="1080"
+               muted loop playsinline preload="none"
+               disablepictureinpicture aria-label="Fire, looping video"></video>
+      </div>
+      <figcaption>
+        <span class="vid-no">N°01</span>
+        <span class="vid-name">FIRE</span>
+        <span class="vid-meta"><i class="vid-live" aria-hidden="true"></i>0:30 · LOOP</span>
+      </figcaption>
+    </figure>
+
+    <figure class="vid-item vid-b">
+      <div class="vid-frame">
+        <video class="vid" src="https://github.com/bachbinh04/tantamtrang/releases/download/media/fire-ball.mp4" width="1920" height="1080"
+               muted loop playsinline preload="none"
+               disablepictureinpicture aria-label="Fire ball, looping video"></video>
+      </div>
+      <figcaption>
+        <span class="vid-no">N°02</span>
+        <span class="vid-name">FIRE BALL</span>
+        <span class="vid-meta"><i class="vid-live" aria-hidden="true"></i>0:30 · LOOP</span>
+      </figcaption>
+    </figure>
+  </section>
+</main>
+
+<footer class="footer">
+  <a href="works.html">Back to Works ↑</a>
+</footer>
+
+<script src="script.js?v=151"></script>
+</body>
+</html>

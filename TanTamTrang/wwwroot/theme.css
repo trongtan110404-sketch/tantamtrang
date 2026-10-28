@@ -1,0 +1,690 @@
+/* Site theme: carries the Home page's look (home.css) to every other page.
+   Loaded after style.css, so it only restyles - layouts and the behaviour
+   in script.js stay as they were. */
+
+:root {
+  --t-paper: #f2f2f2;
+  --t-muted: rgba(242, 242, 242, .58);
+  --t-rule: rgba(242, 242, 242, .16);
+  --t-rule-strong: rgba(242, 242, 242, .3);
+  --t-grey: #8a8a8a;
+  --t-font: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --t-ease: cubic-bezier(.2, .7, .2, 1);
+  --t-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Every small "mono" label on the site now sets in Manrope like Home. */
+  --mono: var(--t-font);
+  --bg: #000;
+  --text: var(--t-paper);
+  --muted: var(--t-muted);
+  --line: var(--t-rule);
+}
+
+body {
+  background: #000;
+  color: var(--t-paper);
+  font-family: var(--t-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: var(--t-grain);
+  opacity: .07;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+::selection { background: #fff; color: #000; }
+
+/* style.css hard-codes Arial / Arial Black on a dozen components (book
+   captions, the About copy, project buttons...); one rule brings them all
+   onto Home's typeface. */
+body,
+body *:not(svg):not(svg *) { font-family: var(--t-font) !important; }
+
+/* ---------- Header (same as Home's) ---------- */
+.topbar {
+  height: auto;
+  padding: 22px clamp(16px, 1.3vw, 24px);
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+}
+
+.brand-static {
+  font-family: var(--t-font);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--t-paper);
+  pointer-events: auto;
+}
+
+.topnav {
+  gap: 6px;
+  font-family: var(--t-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.topnav a {
+  min-width: 92px;
+  padding: 7px 22px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 999px;
+  background: rgba(242, 242, 242, .04);
+  color: var(--t-paper);
+  text-align: center;
+  transition: background .25s, color .25s, border-color .25s;
+}
+
+.topnav a:hover,
+.topnav a.active {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+.works-page .topnav a.active::after { display: none; }
+
+/* ---------- Page heads ---------- */
+.kicker,
+.pst-head .small {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 999px;
+  font: 500 13px var(--t-font);
+  letter-spacing: .02em;
+  color: var(--t-paper);
+}
+
+.kicker::before,
+.pst-head .small::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+.page-title {
+  font-family: var(--t-font);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: .9;
+  background: linear-gradient(90deg, #ffffff 30%, var(--t-grey));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.poster-title {
+  padding-right: 0;
+  /* Works sub-page titles: plain white, no gradient */
+  background: none;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  font-size: clamp(48px, 9.2vw, 140px);
+}
+
+.poster-intro,
+.ct-lead {
+  font: 400 clamp(15px, 1.2vw, 18px)/1.55 var(--t-font);
+  color: var(--t-muted);
+}
+
+.ct-lead { color: var(--t-paper); }
+
+.poster-back,
+.pst-back {
+  display: inline-block;
+  padding: 9px 18px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 999px;
+  font: 500 13px var(--t-font);
+  letter-spacing: 0;
+  color: var(--t-paper);
+  transition: background .25s, color .25s, border-color .25s;
+}
+
+.poster-back:hover,
+.pst-back:hover { background: #fff; border-color: #fff; color: #000; }
+
+/* ---------- Poster-style grids ---------- */
+.pst-item h2 {
+  font: 700 clamp(14px, 1.1vw, 18px)/1.2 var(--t-font);
+  letter-spacing: -.01em;
+}
+
+.pst-item p {
+  font: 400 13px/1.55 var(--t-font);
+  color: var(--t-muted);
+}
+
+/* Poster page: show each description in full (style.css clamps it to
+   three lines, which the Works cards keep). */
+.pst-grid:not(.wks-grid) .pst-item p {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+/* A description written as several paragraphs (Trung Thu): keep the blank
+   line between them, as in the source text. */
+.pst-desc { margin-top: 8px; }
+.pst-desc > * { margin-top: 0; }
+.pst-desc > * + * { margin-top: .9em; }
+.pst-desc h2 { font-size: clamp(13px, 1vw, 15px); }
+
+.pst-meta {
+  font: 500 11px var(--t-font);
+  letter-spacing: .06em;
+  color: rgba(242, 242, 242, .4);
+}
+
+.pst-img { border-radius: 6px; }
+
+/* ---------- Footer ---------- */
+.footer {
+  justify-content: flex-end;   /* only the link is left in it */
+  margin: 0 clamp(16px, 1.3vw, 24px);
+  padding: 22px 0 26px;
+  border-top: 1px solid var(--t-rule);
+  font: 500 14px var(--t-font);
+  color: var(--t-muted);
+}
+
+.footer a {
+  padding: 6px 14px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 999px;
+  color: var(--t-paper);
+  transition: background .25s, color .25s;
+}
+
+.footer a:hover { background: #fff; color: #000; }
+
+/* ---------- Works ---------- */
+/* Works sits on flat black: no grain. */
+.wks-body { background: #000; }
+.wks-body::after { display: none; }
+
+.wks-page { padding-top: 96px; }
+
+.wks-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 32px;
+  padding: clamp(20px, 3vw, 48px) 0 clamp(18px, 2.2vw, 30px);
+  margin-bottom: clamp(28px, 3.5vw, 48px);
+  border-bottom: 2px solid rgba(242, 242, 242, .85);
+}
+
+.wks-title {
+  margin: 0;
+  font: 800 clamp(52px, min(7.5vw, 12vh), 150px)/1.02 var(--t-font);
+  letter-spacing: -.05em;
+}
+
+.wks-title span {
+  display: block;
+  color: #fff;
+}
+
+.wks-title span + span { padding-left: .55em; }
+
+.wks-intro {
+  justify-self: end;
+  max-width: 420px;
+  padding-bottom: .4em;
+}
+
+.wks-intro p {
+  margin: 0 0 14px;
+  font: 400 clamp(15px, 1.2vw, 18px)/1.5 var(--t-font);
+  color: #fff;
+}
+
+.wks-count {
+  font: 700 13px var(--t-font);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+}
+
+/* The cards: one row of five, every picture in the same 4:5 frame. */
+.wks-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 28px);
+  padding-bottom: clamp(60px, 10vh, 120px);
+}
+
+.wks-grid .pst-img { aspect-ratio: 4 / 5; overflow: hidden; }
+
+.wks-grid .pst-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* captions run to the foot of the row so every meta line sits level */
+.wks-grid .pst-item { display: flex; flex-direction: column; }
+.wks-cap { flex: 1; display: flex; flex-direction: column; }
+.wks-cap .pst-meta { margin-top: auto; padding-top: 14px; }
+
+.wks-cap p {
+  margin-top: 8px;
+  font: 400 13px/1.5 var(--t-font);
+  color: var(--t-muted);
+}
+
+@media (max-width: 1100px) {
+  .wks-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
+}
+
+@media (max-width: 720px) {
+  .wks-hero { grid-template-columns: 1fr; gap: 18px; }
+  .wks-intro { justify-self: start; }
+  .wks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 460px) {
+  .wks-grid { grid-template-columns: 1fr; }
+}
+
+/* Cards: black and white at rest, the work's own colour on hover - the same
+   rule as Home's "A Glimpse into My Work". */
+.wks-grid .pst-img {
+  position: relative;
+  border: 1px solid var(--t-rule);
+}
+
+.wks-grid .pst-img img {
+  filter: grayscale(1) brightness(.85);
+  transition: transform .8s var(--t-ease), filter .5s ease;
+}
+
+.wks-grid .pst-item:hover .pst-img img,
+.wks-grid .pst-item:focus-visible .pst-img img {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.05);
+}
+
+.wks-open {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font: 700 13px var(--t-font);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s, transform .3s var(--t-ease);
+}
+
+.wks-grid .pst-item:hover .wks-open,
+.wks-grid .pst-item:focus-visible .wks-open { opacity: 1; transform: none; }
+
+.wks-grid .pst-item h2 { font-size: clamp(18px, 1.5vw, 24px); }
+.wks-grid .pst-item h2::after { content: none; }
+
+/* ---------- Typography ----------
+   A plain spread viewer (typography.html): two pages side by side, a short
+   fade between spreads, prev/next under it and a row of thumbnails. */
+.ty-book {
+  max-width: 1100px;
+  margin: 0 auto clamp(72px, 12vh, 140px);
+}
+
+.ty-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--t-rule);
+}
+
+.ty-index {
+  font: 700 13px var(--t-font);
+  color: var(--t-muted);
+}
+
+.ty-head h2 {
+  margin: 0;
+  font: 700 clamp(20px, 2vw, 28px)/1.1 var(--t-font);
+  letter-spacing: -.02em;
+}
+
+.ty-meta {
+  margin-left: auto;
+  font: 500 13px var(--t-font);
+  color: var(--t-muted);
+}
+
+.ty-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* never taller than ~78% of the window, so the controls stay in view
+     (two 820x1158 pages side by side are 1.416 times as wide as tall) */
+  width: min(100%, calc(78vh * 1.416));
+  margin: 0 auto;
+  gap: 2px;
+  outline: none;
+  transition: opacity .18s ease;
+}
+
+.ty-spread.is-out { opacity: 0; }
+
+.ty-spread:focus-visible { box-shadow: 0 0 0 1px var(--t-rule-strong); }
+
+.ty-page {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: #111;
+  aspect-ratio: 820 / 1158;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ty-page-left { cursor: w-resize; }
+.ty-page-right { cursor: e-resize; }
+
+.ty-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ty-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.ty-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--t-paper);
+  font: 500 17px var(--t-font);
+  cursor: pointer;
+  transition: background .2s, color .2s, opacity .2s;
+}
+
+.ty-btn:hover:not(:disabled) { background: #fff; color: #000; }
+.ty-btn:disabled { opacity: .3; cursor: default; }
+
+.ty-count {
+  min-width: 70px;
+  text-align: center;
+  font: 500 14px var(--t-font);
+  color: var(--t-muted);
+}
+
+.ty-count b { color: var(--t-paper); font-weight: 700; }
+
+.ty-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+.ty-thumb {
+  display: flex;
+  flex: none;
+  gap: 1px;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: .4;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.ty-thumb img {
+  width: 44px;
+  height: 62px;
+  object-fit: cover;
+  background: #111;
+}
+
+.ty-thumb:hover { opacity: .75; }
+.ty-thumb[aria-selected="true"] { opacity: 1; box-shadow: 0 2px 0 #fff; }
+
+/* Books whose pages are already landscape spreads (data-single): one
+   image at a time, in the same frame as the paired books above, shown
+   whole at its own proportions (nothing cropped). */
+.ty-book-single .ty-spread { grid-template-columns: 1fr; }
+
+.ty-book-single .ty-page { aspect-ratio: auto; cursor: pointer; }
+.ty-book-single .ty-page img { height: auto; object-fit: contain; }
+.ty-book-single .ty-thumb img { width: 88px; height: 62px; }
+
+/* Zoom lightbox (spread-viewer.js, books with data-zoom). The image is
+   placed at its open size; the script animates it out of / back into the
+   picture on the page. */
+.ty-book[data-zoom] .ty-page-single { cursor: zoom-in; }
+
+.ty-lb {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  cursor: zoom-out;
+}
+
+.ty-lb.is-open { display: block; }
+
+.ty-lb-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .94);
+}
+
+.ty-lb-img {
+  position: fixed;
+  object-fit: contain;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.ty-lb-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(242, 242, 242, .35);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  font: 400 26px/1 var(--t-font);
+  cursor: pointer;
+}
+
+.ty-lb-close:hover { background: #fff; color: #000; }
+
+html.ty-lb-lock { overflow: hidden; }
+
+/* Square images (album covers): fit the window's height instead. */
+.ty-book-square .ty-spread { width: min(100%, 78vh); }
+.ty-book-square .ty-thumb img { width: 62px; height: 62px; }
+
+.ty-full {
+  position: absolute;
+  right: 0;
+  padding: 7px 14px;
+  border: 1px solid var(--t-rule-strong);
+  border-radius: 999px;
+  font: 500 13px var(--t-font);
+  color: var(--t-paper);
+  transition: background .2s, color .2s;
+}
+
+.ty-full:hover { background: #fff; color: #000; }
+.ty-book-single .ty-bar { position: relative; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ty-spread { transition: none; }
+}
+
+/* ---------- About ----------
+   A still three-column page (about.html): title, one photograph, the bio
+   and the CV buttons. Stacks on narrow screens. */
+.ab-page {
+  min-height: calc(100vh - 80px);
+  padding: 120px clamp(16px, 4vw, 64px) 64px;
+  display: flex;
+  align-items: center;
+}
+
+.ab-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(280px, 440px) minmax(280px, 1fr);
+  gap: clamp(28px, 5vw, 96px);
+  align-items: center;
+}
+
+.ab-title {
+  margin: 0;
+  font: 800 clamp(34px, 4vw, 64px)/.92 var(--t-font);
+  letter-spacing: -.05em;
+  color: #fff;
+}
+
+.ab-photo {
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+
+.ab-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ab-bio p {
+  margin: 0;
+  max-width: 34em;
+  font: 400 clamp(14px, 1.05vw, 16px)/1.5 var(--t-font);
+  color: #fff;
+}
+
+.ab-bio p + p { margin-top: .9em; }
+
+/* the CV buttons sit under the bio, on its left edge */
+.ab-cv { justify-content: flex-start; margin-top: 28px; }
+
+.ab-cv .cv-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 999px;
+  font: 600 13px var(--t-font);
+  letter-spacing: .04em;
+  color: #fff;
+  transition: background .2s, color .2s;
+}
+
+.ab-cv .cv-download,
+.ab-cv .cv-btn:hover { background: #fff; color: #000; }
+.ab-cv .cv-download:hover { background: transparent; color: #fff; }
+
+@media (max-width: 900px) {
+  .ab-page { padding-top: 110px; }
+  .ab-grid { grid-template-columns: 1fr; gap: 28px; }
+  .ab-photo { max-width: 440px; }
+}
+
+/* ---------- Experience Design ----------
+   Case-study pages that link to their full-size image. */
+.ed-article-intro {
+  max-width: 820px;
+  font: 400 clamp(17px, 1.5vw, 22px)/1.55 var(--t-font);
+  color: var(--t-paper);
+}
+
+.ed-page a { display: block; cursor: zoom-in; }
+
+/* Every case-study page is shown as large as the screen allows: the full
+   window width, but never taller than the window under the header, so a
+   whole page is always in view at its largest. */
+.ed-deck {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.ed-page {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.ed-page img {
+  width: auto;
+  height: auto;
+  max-width: 100vw;
+  max-height: calc(100vh - 80px);
+  max-height: calc(100svh - 80px);
+  border-radius: 0;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 900px) {
+  .topnav a { min-width: 0; padding: 6px 14px; font-size: 13px; }
+}
+
+@media (max-width: 560px) {
+  .topbar { padding: 14px 16px; }
+  .brand-static { font-size: 16px; }
+  .topnav { gap: 4px; }
+  .topnav a { padding: 5px 10px; font-size: 12px; }
+}
+
+/* ---------- Page fade ----------
+   Opens with a short fade-in; script.js adds .pf-leave to fade out before
+   following a link to another page. */
+@keyframes pf-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pf-out { from { opacity: 1; } to { opacity: 0; } }
+body { animation: pf-in .45s ease both; }
+/* an animation too: the fade-in's fill would override a plain transition */
+html.pf-leave body { animation: pf-out .3s ease forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  html.pf-leave body { animation: none; }
+}

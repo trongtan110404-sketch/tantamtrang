@@ -1,0 +1,280 @@
+/* Home page only (index.html): a typographic poster on the home page's
+   black ground (film grain and slow grey glows). One 12-column grid places
+   the header, the notes, the big statement and the footer row. */
+
+:root {
+  --paper: #f2f2f2;
+  --muted: rgba(242, 242, 242, .62);
+  --rule: rgba(242, 242, 242, .85);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --pad: clamp(18px, 4vw, 64px);
+  --gap: clamp(10px, 1.4vw, 24px);
+  --big: min(15vw, 14.5vh);       /* size of the large statement */
+  --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body.hp {
+  margin: 0;
+  background: #000 url("images/transition-06.png") center / cover no-repeat fixed;
+  color: var(--paper);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--paper); color: #000; }
+
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+
+/* ---------- Background ---------- */
+/* Fine film grain over everything, so the black has some texture. */
+body.hp::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--grain);
+  opacity: .07;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* A dark veil over the background picture so the white type stays clear. */
+body.hp::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .58);
+  pointer-events: none;
+}
+
+/* ---------- The poster ---------- */
+.pt-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(24px, 5vh, 64px) var(--pad) clamp(20px, 3.5vh, 40px);
+}
+
+.pt-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+/* header: logo / year / label / menu, closed by a rule */
+.pt-top {
+  align-items: end;
+  padding-bottom: clamp(14px, 2.2vh, 24px);
+  border-bottom: 2px solid var(--rule);
+}
+
+.pt-logo {
+  grid-column: 1 / 6;
+  font-weight: 800;
+  font-size: clamp(30px, 3.6vw, 58px);
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.pt-year {
+  grid-column: 6 / 9;
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 52px);
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+
+.pt-label {
+  grid-column: 7 / 9;
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 19px);
+  line-height: 1.05;
+}
+
+.pt-nav {
+  grid-column: 9 / 13;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+/* The same pill buttons as the menu on every other page (theme.css). */
+.pt-nav a {
+  min-width: 92px;
+  padding: 7px 22px;
+  border: 1px solid rgba(242, 242, 242, .3);
+  border-radius: 999px;
+  background: rgba(242, 242, 242, .04);
+  color: var(--paper);
+  text-align: center;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: background .25s, color .25s, border-color .25s;
+}
+
+.pt-nav a:hover,
+.pt-nav a:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+/* notes: quote / availability / two small labels, closed by a rule */
+.pt-notes {
+  padding: clamp(12px, 2vh, 20px) 0 clamp(14px, 2.2vh, 24px);
+  border-bottom: 2px solid var(--rule);
+}
+
+.pt-quote {
+  grid-column: 1 / 6;
+  max-width: 34em;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.3;
+  color: #fff;
+}
+
+.pt-quote b { color: var(--paper); font-weight: 700; }
+
+.pt-strong {
+  grid-column: 6 / 9;
+  font-weight: 700;
+  font-size: clamp(17px, 1.6vw, 25px);
+  line-height: 1.15;
+}
+
+.pt-strong.pt-small {
+  grid-column: auto / span 2;
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1.05;
+}
+
+.pt-notes .pt-small:nth-of-type(3) { grid-column: 9 / 11; }
+.pt-notes .pt-small:nth-of-type(4) { grid-column: 11 / 13; }
+
+/* the statement: two lines from the left, then the rest from the middle */
+.pt-type {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: clamp(16px, 3.5vh, 48px) 0;
+}
+
+.pt-statement {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  font-weight: 500;
+  font-size: var(--big);
+  line-height: .86;
+  letter-spacing: -.055em;
+}
+
+.pt-l { display: block; white-space: nowrap; }
+.pt-left { grid-column: 1 / -1; }
+.pt-right { grid-column: 4 / 9; }
+
+/* The photo fills the right-hand column, from the rule above the statement
+   to the rule below it. */
+.pt-stage {
+  position: relative;
+  width: 100%;
+}
+
+.pt-photo {
+  position: absolute;
+  top: clamp(14px, 2.2vh, 24px);
+  bottom: clamp(14px, 2.2vh, 24px);
+  right: 0;
+  width: calc((100% - 11 * var(--gap)) / 12 * 4 + 3 * var(--gap));   /* the last 4 of 12 columns */
+  margin: 0;
+  overflow: hidden;
+}
+
+.pt-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 50%;
+}
+
+/* footer row: four notes on a rule */
+.pt-foot {
+  padding-top: clamp(12px, 2vh, 18px);
+  border-top: 2px solid var(--rule);
+  font-weight: 600;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.25;
+}
+
+.pt-foot p:nth-child(1) { grid-column: 1 / 4; }
+.pt-foot p:nth-child(2) { grid-column: 4 / 7; }
+.pt-foot p:nth-child(3) { grid-column: 7 / 10; }
+.pt-foot p:nth-child(4) { grid-column: 10 / 13; }
+
+.pt-foot a { transition: opacity .2s; }
+.pt-foot a:hover { opacity: .65; }
+
+/* ---------- Narrow screens: fewer, wider columns ---------- */
+@media (max-width: 820px) {
+  .pt-top { row-gap: 18px; }
+  .pt-logo { grid-column: 1 / 8; }
+  .pt-year { grid-column: 8 / 13; text-align: right; }
+  .pt-label { grid-column: 1 / 7; }
+  .pt-nav { grid-column: 1 / 13; justify-content: flex-start; }
+  .pt-nav a { flex: 1; min-width: 0; padding: 7px 8px; font-size: 14px; }
+
+  .pt-notes { row-gap: 14px; }
+  .pt-quote { grid-column: 1 / -1; }
+  .pt-strong { grid-column: 1 / 5; }
+  .pt-notes .pt-small:nth-of-type(3) { grid-column: 5 / 9; }
+  .pt-notes .pt-small:nth-of-type(4) { grid-column: 9 / 13; }
+
+  :root { --big: min(19vw, 15vh); }
+
+  /* no room beside the words: the photo follows them instead */
+  .pt-type { flex-direction: column; align-items: stretch; }
+  .pt-photo {
+    position: static;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    margin-top: 22px;
+  }
+  .pt-right { grid-column: 4 / -1; }
+
+  .pt-foot { row-gap: 12px; }
+  .pt-foot p:nth-child(1) { grid-column: 1 / 7; }
+  .pt-foot p:nth-child(2) { grid-column: 7 / 13; overflow-wrap: anywhere; }
+  .pt-foot p:nth-child(3) { grid-column: 1 / 7; }
+  .pt-foot p:nth-child(4) { grid-column: 7 / 13; }
+}
+
+/* ---------- Page fade ----------
+   Opens with a short fade-in; the script in index.html adds .pf-leave to
+   fade out before following a link to another page. */
+@keyframes pf-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pf-out { from { opacity: 1; } to { opacity: 0; } }
+body { animation: pf-in .45s ease both; }
+/* an animation too: the fade-in's fill would override a plain transition */
+html.pf-leave body { animation: pf-out .3s ease forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  html.pf-leave body { animation: none; }
+}

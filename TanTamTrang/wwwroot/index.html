@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HOME - TTT</title>
+  <meta name="description" content="Portfolio of Dao Trong Tan (TTT), a visual designer working in 3D, motion, poster, typography, photography and experience design. Selected works and contact.">
+  <link rel="canonical" href="https://tantamtrang.com/">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="apple-touch-icon" href="images/favicon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TanTamTrang">
+  <meta property="og:title" content="HOME - TTT">
+  <meta property="og:description" content="Portfolio of Dao Trong Tan (TTT), a visual designer working in 3D, motion, poster, typography, photography and experience design. Selected works and contact.">
+  <meta property="og:url" content="https://tantamtrang.com/">
+  <meta property="og:image" content="https://tantamtrang.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="home.css?v=25">
+  </head>
+
+<body class="hp">
+
+  <!-- Home is laid out as a typographic poster: a header of four columns,
+       a line of notes, the statement in very large type stepping from left
+       to right, and a footer row. Styles are in home.css only. -->
+  <!-- Background: images/transition-06.png under a dark veil, with film
+       grain on top (body::before / body::after in home.css). -->
+
+  <div class="pt-page">
+    <header class="pt-row pt-top">
+      <a class="pt-logo" href="index.html" aria-label="TanTamTrang home">TanTamTrang</a>
+    
+      
+      <nav class="pt-nav" aria-label="Main">
+        <a href="about.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section class="pt-row pt-notes">
+      <p class="pt-quote">I create research-driven visual experiences across 3D and experience design that challenge perspectives and leave lasting impressions.<br></p>
+      
+      <span class="pt-label">Visual<br>Designer</span>
+    </section>
+
+    <main class="pt-type">
+      <div class="pt-stage">
+        <h1 class="pt-statement">
+          <span class="pt-l pt-left">Welcome</span>
+          <span class="pt-l pt-left">to</span>
+          <span class="pt-l pt-right">my</span>
+          <span class="pt-l pt-right">world.</span>
+        </h1>
+      </div>
+      <!-- From images/about-user-01 (1).png, resized for the web. It fills the
+           right-hand column between the two rules. -->
+      <figure class="pt-photo">
+        <img src="images/home/home-photo.jpg" width="1200" height="800" alt="Dao Trong Tan holding a camera" decoding="async">
+      </figure>
+    </main>
+
+    <footer class="pt-row pt-foot">
+     
+    </footer>
+  </div>
+
+  <script>
+    // Fade out before following a link to another page of the site
+    // (the same rule as script.js on the other pages).
+    (function () {
+      var leaving = false;
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest && e.target.closest('a[href]');
+        if (!link || leaving) return;
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if (link.target === '_blank' || link.hasAttribute('download')) return;
+        var url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || !/\.html$|\/$/.test(url.pathname)) return;
+        if (url.pathname === location.pathname) return;
+        e.preventDefault();
+        leaving = true;
+        document.documentElement.classList.add('pf-leave');
+        setTimeout(function () { location.href = url.href; }, 300);
+      });
+      window.addEventListener('pageshow', function (e) {
+        if (!e.persisted) return;
+        leaving = false;
+        document.documentElement.classList.remove('pf-leave');
+      });
+    })();
+  </script>
+</body>
+
+</html>

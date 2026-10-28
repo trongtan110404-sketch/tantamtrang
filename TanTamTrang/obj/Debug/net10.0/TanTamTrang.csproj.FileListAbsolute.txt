@@ -1,0 +1,112 @@
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\appsettings.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.staticwebassets.runtime.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.staticwebassets.endpoints.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.exe
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.deps.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.runtimeconfig.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.pdb
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.csproj.AssemblyReference.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.AssemblyInfoInputs.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.AssemblyInfo.cs
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.csproj.CoreCompileInputs.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.sourcelink.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\scopedcss\bundle\TanTamTrang.styles.css
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\6300egtk5u-{0}-xrmza6qp37-xrmza6qp37.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\9jjzzpfmiu-{0}-lc3si397zr-lc3si397zr.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\zg1yk8dknb-{0}-4ykp2wmdug-4ykp2wmdug.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\3go5qnp808-{0}-5zpxv1jrk4-5zpxv1jrk4.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTr.FAF4AF72.Up2Date
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\refint\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.pdb
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.genruntimeconfig.cache
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\ref\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\sjls5uewp4-{0}-j18cplls3h-j18cplls3h.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\6kt7mth6yf-{0}-1v54dlfcwv-1v54dlfcwv.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\5aauayl4mv-{0}-3w1muzzc5n-3w1muzzc5n.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\kalntdko6v-{0}-89ngviba1n-89ngviba1n.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\ctjxiog75b-{0}-nxk3r9zfx7-nxk3r9zfx7.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\khyml4crp5-{0}-exeebuvpnt-exeebuvpnt.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\l9k7nuyllq-{0}-o6z11pw76e-o6z11pw76e.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\7h3b71a5kb-{0}-1by3x0cox2-1by3x0cox2.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\iikvsn7v8f-{0}-egouqgr0vs-egouqgr0vs.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\d8ghrxtr12-{0}-xfmhb0z08q-xfmhb0z08q.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\2eh3pofddh-{0}-2ujrgpqott-2ujrgpqott.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\3r25dqge78-{0}-rw7mdzw4lp-rw7mdzw4lp.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\k2c4n6x6j2-{0}-taql13aq7s-taql13aq7s.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\w422atqt4u-{0}-6j4ve8rrp6-6j4ve8rrp6.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\m9p6exg2zq-{0}-19bu1tzmyb-19bu1tzmyb.gz
+C:\Users\binhl\Desktop\New folder (3)\tandao\TanTamTrang\obj\Debug\net10.0\compressed\u7i9uwd4pp-{0}-7atup0nsn9-7atup0nsn9.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\appsettings.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.staticwebassets.runtime.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.staticwebassets.endpoints.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.exe
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.deps.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.runtimeconfig.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\TanTamTrang.pdb
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.csproj.AssemblyReference.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.AssemblyInfoInputs.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.AssemblyInfo.cs
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.csproj.CoreCompileInputs.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.sourcelink.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\scopedcss\bundle\TanTamTrang.styles.css
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\6kt7mth6yf-{0}-5hbmqedako-5hbmqedako.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\5aauayl4mv-{0}-vw1s94odza-vw1s94odza.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\kalntdko6v-{0}-4vlrp8l12x-4vlrp8l12x.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\ctjxiog75b-{0}-pe7r97x9fr-pe7r97x9fr.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\khyml4crp5-{0}-da9h41yxz7-da9h41yxz7.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\l9k7nuyllq-{0}-1cripqixis-1cripqixis.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\7h3b71a5kb-{0}-rl09xfskku-rl09xfskku.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\6300egtk5u-{0}-xrmza6qp37-xrmza6qp37.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\m9p6exg2zq-{0}-ilqr34ngoi-ilqr34ngoi.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\u7i9uwd4pp-{0}-gqmd69o6vc-gqmd69o6vc.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\iikvsn7v8f-{0}-r3zy2cr47g-r3zy2cr47g.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\d8ghrxtr12-{0}-zbbplrgbef-zbbplrgbef.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\9jjzzpfmiu-{0}-lc3si397zr-lc3si397zr.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\zg1yk8dknb-{0}-erg87dxna7-erg87dxna7.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\sjls5uewp4-{0}-j18cplls3h-j18cplls3h.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\2eh3pofddh-{0}-2ujrgpqott-2ujrgpqott.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\3go5qnp808-{0}-5zpxv1jrk4-5zpxv1jrk4.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\3r25dqge78-{0}-inej1f508m-inej1f508m.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\k2c4n6x6j2-{0}-5qbn215na9-5qbn215na9.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\compressed\w422atqt4u-{0}-rtog3zaysw-rtog3zaysw.gz
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTr.FAF4AF72.Up2Date
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\refint\TanTamTrang.dll
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.pdb
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\TanTamTrang.genruntimeconfig.cache
+C:\Users\binhl\Desktop\New folder (3) - Copy\tandao\TanTamTrang\obj\Debug\net10.0\ref\TanTamTrang.dll
