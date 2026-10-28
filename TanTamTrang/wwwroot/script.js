@@ -8,7 +8,7 @@ function setActiveNav() {
   });
 }
 setActiveNav();
-document.head.insertAdjacentHTML('beforeend', '<link rel="icon" type="image/png" href="/images/favicon.png">');
+document.head.insertAdjacentHTML('beforeend', '<link rel="icon" type="image/png" href="images/favicon.png">');
 /* Vertical face counter on the About and Poster pages.
    The rail draws a LOOP, not a line: face N-1 is followed by face 0, so the
    scale it stands for is one whole revolution and the divisor is N, not N-1.
